@@ -1,0 +1,5 @@
+@presentation.room_id
+@presentation.timeslot_id
+
+        <span class='rest_in_place' attribute="title"><%=@presentation.title%></span><br/>
+        <span class='rest_in_place' attribute="presenter"><%=@presentation.presenter%></span>

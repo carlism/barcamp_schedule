@@ -1,0 +1,27 @@
+<% content_for :title do %>
+	Timeslots
+<% end %>
+
+<table>
+  <tr>
+    <th>Start time</th>
+  </tr>
+
+<% for timeslot in @timeslots %>
+  <tr>
+    <td><%=h timeslot.start_time.strftime("%I:%M %p") %></td>
+    <td><%= link_to_remote image_tag("edit.png", :border=>0), :update=>'form_div', :url=>edit_timeslot_path(timeslot), :method => :get %></td>
+    <td><%= link_to image_tag("delete.png", :border=>0), timeslot, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+<tr>
+  <td>&nbsp;</td>
+  <td colspan="2" align="center">
+	<%= link_to_remote image_tag("add.png", :border=>0), 
+		:update=>'form_div',
+		:url=>new_timeslot_path %></td>
+</tr>
+</table>
+
+<div id="form_div">
+</div>

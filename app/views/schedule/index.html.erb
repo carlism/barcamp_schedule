@@ -1,0 +1,32 @@
+<% #@days.each do |day| %>
+        <% #link_to_unless(day == @selected_day, day, :controller=>'schedule', :selected_day=>day) { day } %>
+<% #end %>
+
+<table class="schedule" cellspacing="0" width="100%">
+  <tr>
+    <th width="10%">Time&nbsp;slot</th>
+    <% @rooms.each do |room| %>
+      <th width="<%=90/@rooms.size%>%">
+        <%=room.name%> (<%=room.location%>)
+      </th>
+    <% end %>
+  </tr>
+  <% @timeslots.each_with_index do |timeslot, ts_index| %>
+    <tr>
+      <td>
+        <%=timeslot.start_time.strftime("%I:%M %p")%>
+      </td>
+    <% @rooms.each_with_index do |room, rm_index| %>
+      <% presentation = @grid[ts_index][rm_index] %>
+      <td>
+        <%if !presentation.nil? and presentation.respond_to? :title%>
+          <strong><%=presentation.title%></strong><br/>
+          <%=presentation.presenter%>
+		<% else %>
+			&nbsp;
+        <% end %>
+      </td>
+    <% end %>
+    </tr>
+  <% end %>
+</table>

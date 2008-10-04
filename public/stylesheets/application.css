@@ -1,0 +1,29 @@
+table.schedule {
+	border: 0px;
+	background-color: #003F83;
+}
+
+table.schedule tr th {
+	font: normal normal bold .9em Arial, sans-serif;
+	color: white;
+	background-image: url(../images/table_header.gif);
+	background-repeat: repeat-x;
+	background-color: white;
+	border-right: 1px solid #003F83;
+	vertical-align: top;
+}
+
+table.schedule tr td {
+	font: normal normal normal .8em Arial, sans-serif;
+	color: black;
+	border-right: 1px solid #003F83;
+	border-bottom: 1px solid #003F83;
+	background-color: white;
+}
+
+table.schedule tr th:first-child {
+	border-left: 1px solid #003F83;
+}
+table.schedule tr td:first-child {
+	border-left: 1px solid #003F83;
+}

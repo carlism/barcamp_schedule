@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>date_column (FlexTimes::ClassMethods)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/flex_times.rb, line 200</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">date_column</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">columns</span>)
+      <span class="ruby-identifier">columns</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">column</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">define_method</span>(<span class="ruby-node">&quot;#{column}=&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">param</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+            <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{column}&quot;</span>).<span class="ruby-identifier">nil?</span>
+              <span class="ruby-identifier">right_now</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{column}&quot;</span>)
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">right_now</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">param</span> = <span class="ruby-identifier">param</span>.<span class="ruby-identifier">symbolize_keys</span>
+            
+            <span class="ruby-identifier">default_date</span> = { <span class="ruby-identifier">:year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">right_now</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">:month</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">right_now</span>.<span class="ruby-identifier">month</span>, <span class="ruby-identifier">:day</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">right_now</span>.<span class="ruby-identifier">day</span> }
+            <span class="ruby-identifier">date_hash</span> = <span class="ruby-identifier">default_date</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">param</span>)
+            <span class="ruby-identifier">real_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">date_hash</span>[<span class="ruby-identifier">:year</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">date_hash</span>[<span class="ruby-identifier">:month</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">date_hash</span>[<span class="ruby-identifier">:day</span>].<span class="ruby-identifier">to_i</span>)
+            
+            <span class="ruby-identifier">write_attribute</span>(<span class="ruby-node">&quot;#{column}&quot;</span>, <span class="ruby-identifier">real_date</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">write_attribute</span>(<span class="ruby-node">&quot;#{column}&quot;</span>, <span class="ruby-identifier">param</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<% #@days.each do |day| %>
+        <% #link_to_unless(day == @selected_day, day, :controller=>'schedule', :action=>'admin', :selected_day=>day) { day } %>
+<% #end %>
+<script language="javascript">
+	function newPresentation(ts, rm) {
+		new Ajax.request('<%=presentations_path%>?room_id='+rm+'timeslot_id='+ts, {asynchronous:true, evalScripts:true, method:'post'})
+	}
+</script>
+<table width="100%" cellspacing="0" class="schedule">
+  <tr>
+    <th width="10%">Time&nbsp;slot</th>
+    <% @rooms.each do |room| %>
+      <th width="<%=90/@rooms.size%>%">
+        <%=room.name%> (<%=room.location%>)
+      </th>
+    <% end %>
+  </tr>
+  <% @timeslots.each_with_index do |timeslot, ts_index| %>
+    <tr>
+      <td>
+        <%=timeslot.start_time.strftime("%I:%M %p")%>
+      </td>
+    <% @rooms.each_with_index do |room, rm_index| %>
+      <% presentation = @grid[ts_index][rm_index] %>
+      <td>
+        <%if !presentation.nil? and presentation.respond_to? :title%>
+          <div id="<%="#{timeslot.id}_#{room.id}"%>" object="presentation" url="<%=url_for presentation%>.xml">
+            <span class='rest_in_place' attribute="title"><%=presentation.title%></span><br/>
+            <span class='rest_in_place' attribute="presenter"><%=presentation.presenter%></span>
+          </div>
+        <% else %>
+          <div id="<%="#{timeslot.id}_#{room.id}"%>" object="presentation" url="<%=url_for presentation%>.xml">
+            <a href="javascript:newPresentation(<%="#{timeslot.id}, #{room.id}"%>)">empty</a>
+          </div>
+        <% end %>
+      </td>
+    <% end %>
+    </tr>
+  <% end %>
+</table>

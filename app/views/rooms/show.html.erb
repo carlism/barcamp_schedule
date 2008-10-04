@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @room.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @room.location %>
+</p>
+
+<p>
+  <b>Capacity:</b>
+  <%=h @room.capacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>

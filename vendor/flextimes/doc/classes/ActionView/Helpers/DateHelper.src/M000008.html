@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>datetime_select (ActionView::Helpers::DateHelper)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/flex_times.rb, line 90</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">datetime_select</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">method</span>, <span class="ruby-identifier">options</span> = {})
+    <span class="ruby-comment cmt"># extract the data from the object/method</span>
+    <span class="ruby-identifier">obj</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-node">&quot;@#{object}&quot;</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">m</span> = <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">myTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Time</span>)
+        <span class="ruby-identifier">myTime</span> = <span class="ruby-identifier">m</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Date</span>)
+        <span class="ruby-identifier">myTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">local</span>(<span class="ruby-identifier">m</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">month</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">day</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">myTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">m</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">prefix</span> = <span class="ruby-node">&quot;#{object}[#{method}]&quot;</span>
+    <span class="ruby-comment cmt">#create the select stuff</span>
+    <span class="ruby-identifier">order</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:order</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">DEFAULT_DATETIME_ORDER</span>.<span class="ruby-identifier">dup</span>
+    (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:twelve_hour</span>] =  <span class="ruby-keyword kw">true</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">order</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:ampm</span>)
+    (<span class="ruby-identifier">order</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">:ampm</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:twelve_hour</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">order</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">:ampm</span>)
+    
+    <span class="ruby-identifier">outstring</span> = <span class="ruby-value str">&quot;&quot;</span>
+    <span class="ruby-identifier">select_by_key</span> = <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;select_#{key.to_s}&quot;</span>, <span class="ruby-identifier">myTime</span>, {<span class="ruby-identifier">:prefix</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">:twelve_hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:twelve_hour</span>], <span class="ruby-identifier">:minute_step</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:minute_step</span>]}) }
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">key</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">order</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
+        <span class="ruby-identifier">outstring</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">select_by_key</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">key</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">outstring</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span> 
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">outstring</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

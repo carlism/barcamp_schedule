@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: ActionView::Helpers::DateHelper</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">ActionView::Helpers::DateHelper</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/flex_times_rb.html">
+                lib/flex_times.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="../../FlexTimes.html">FlexTimes</a> - the plugin that gives YOU
+control over the datetime helpers.
+</p>
+<p>
+Author: Sean Cribbs
+</p>
+<p>
+See datetime_column and <a
+href="DateHelper.html#M000008">datetime_select</a> for more information.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000009">date_select</a>&nbsp;&nbsp;
+      <a href="#M000008">datetime_select</a>&nbsp;&nbsp;
+      <a href="#M000007">select_ampm</a>&nbsp;&nbsp;
+      <a href="#M000006">select_hour</a>&nbsp;&nbsp;
+      <a href="#M000005">select_minute</a>&nbsp;&nbsp;
+      <a href="#M000010">time_select</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_DATETIME_ORDER</td>
+          <td>=</td>
+          <td class="context-item-value">[:year, :month, :day, &quot;&amp;mdash; &quot;, :hour, &quot; : &quot;, :minute, &quot; : &quot;, :second].freeze</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Specifies the default field and text order for the <a
+href="DateHelper.html#M000008">datetime_select</a> function
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">datetime_select</td>
+          <td>-></td>
+          <td class="context-item-value">old_datetime_select</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">date_select</td>
+          <td>-></td>
+          <td class="context-item-value">old_date_select</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="DateHelper.src/M000009.html" target="Code" class="method-signature"
+            onclick="popupCode('DateHelper.src/M000009.html');return false;">
+          <span class="method-name">date_select</span><span class="method-args">(object, method, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates select boxes for the date, without the time. This is a shortcut for
+calling <a href="DateHelper.html#M000008">datetime_select</a> with
+<tt>:order =&gt; [:year, :month, :day]</tt>. You may also specify your own
+order, but <tt>:hour</tt>, <tt>:minute</tt>, <tt>:second</tt>, and
+<tt>:ampm</tt> will be removed.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="DateHelper.src/M000008.html" target="Code" class="method-signature"
+            onclick="popupCode('DateHelper.src/M000008.html');return false;">
+          <span class="method-name">datetime_select</span><span class="method-args">(object, method, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Replaces original <a href="DateHelper.html#M000008">datetime_select</a>
+with a more flexible version. This includes support for 12-hour time and
+arbitrary ordering of time parameters.
+</p>
+<h4>12/24 hour time format</h4>
+<p>
+To use 12-hour time, set the option :twelve_hour =&gt; true. An AM/PM
+select will be added to the string if it is not included in the :order
+option. :twelve_hour defaults to false/nil.
+</p>
+<h4>Specifying the output</h4>
+<p>
+The <tt>:order</tt> option is used to specify the order in which time
+parameters and any intervening text are output.
+</p>
+<p>
+Valid keys for the time parameters are: <tt>:year, :month, :day, :hour,
+:minute, :second, :ampm</tt>. If <tt>:ampm</tt> occurs in the order,
+12-hour time is used automatically (i.e. <tt>:twelve_hour =&gt; true</tt>).
+You may You may place any string into the <tt>:order</tt> array and it will
+be output without modification.
+</p>
+<h4>Examples</h4>
+<pre>
+  datetime_select &quot;object&quot;, &quot;method&quot;  # Uses default order
+  datetime_select &quot;object&quot;, &quot;method&quot;, :twelve_hour =&gt; true # Uses default order with 12-hour time
+  datetime_select &quot;object&quot;, &quot;method&quot;, :order =&gt; [:month, :day, &quot; , &quot;, :year] # Creates selects in format &quot;[April][12] , [2006]&quot;
+  datetime_select &quot;object&quot;, &quot;method&quot;, :order =&gt; [:month, :day, :hour, :ampm] # Automatically uses 12-hour time and outputs in the format &quot;[April][12][12][PM]&quot;
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="DateHelper.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('DateHelper.src/M000007.html');return false;">
+          <span class="method-name">select_ampm</span><span class="method-args">(datetime, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a meridian select box (AM/PM)
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="DateHelper.src/M000006.html" target="Code" class="method-signature"
+            onclick="popupCode('DateHelper.src/M000006.html');return false;">
+          <span class="method-name">select_hour</span><span class="method-args">(datetime, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a select box for the hour of the given datetime.
+</p>
+<pre>
+   :twelve_hour =&gt; true # will use 12 hour time (1..12)
+   :twelve_hour =&gt; false # (or nil) will use 24 hour time (0..23)
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="DateHelper.src/M000005.html" target="Code" class="method-signature"
+            onclick="popupCode('DateHelper.src/M000005.html');return false;">
+          <span class="method-name">select_minute</span><span class="method-args">(datetime, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a select box for the minute of the given datetime
+</p>
+<pre>
+   :minute_step =&gt; anInteger (step minute options by anInteger)
+   :minute_step =&gt; 15 (produces 0, 15, 30, 45)
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="DateHelper.src/M000010.html" target="Code" class="method-signature"
+            onclick="popupCode('DateHelper.src/M000010.html');return false;">
+          <span class="method-name">time_select</span><span class="method-args">(object, method, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates select boxes for the time, without the date. This is a shortcut for
+calling <a href="DateHelper.html#M000008">datetime_select</a> with
+<tt>:order =&gt; [:hour, &quot; : &quot;, :minute]</tt>. You may also
+specify your own order, but <tt>:year</tt>, <tt>:month</tt>, and
+<tt>:day</tt> will be removed.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>setup (FlexTimesTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/flex_times_test.rb, line 12</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup</span>
+    <span class="ruby-ivar">@model</span> = <span class="ruby-constant">ModelWithDate</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@text_dt</span> = <span class="ruby-value str">&quot;2005-06-01 12:34:56 CDT&quot;</span>
+    <span class="ruby-ivar">@text_date</span> = <span class="ruby-value str">&quot;2005-06-01&quot;</span>
+    <span class="ruby-ivar">@text_time</span> = <span class="ruby-value str">&quot;12:34:56 CDT&quot;</span>
+    <span class="ruby-ivar">@hash_dt</span> = { <span class="ruby-identifier">:year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;2005&quot;</span>, <span class="ruby-identifier">:month</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;06&quot;</span>, <span class="ruby-identifier">:day</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;01&quot;</span>, <span class="ruby-identifier">:hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;12&quot;</span>, <span class="ruby-identifier">:minute</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;34&quot;</span>, <span class="ruby-identifier">:second</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;56&quot;</span>}    
+    <span class="ruby-ivar">@hash_date</span> = { <span class="ruby-identifier">:year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;2005&quot;</span>, <span class="ruby-identifier">:month</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;06&quot;</span>, <span class="ruby-identifier">:day</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;01&quot;</span> }
+    <span class="ruby-ivar">@hash_time</span> = { <span class="ruby-identifier">:hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;12&quot;</span>, <span class="ruby-identifier">:minute</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;34&quot;</span>, <span class="ruby-identifier">:second</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;56&quot;</span> }
+    <span class="ruby-ivar">@hash_12hr_dt</span> = { <span class="ruby-identifier">:year</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;2005&quot;</span>, <span class="ruby-identifier">:month</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;06&quot;</span>, <span class="ruby-identifier">:day</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;01&quot;</span>, <span class="ruby-identifier">:hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;12&quot;</span>, <span class="ruby-identifier">:minute</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;34&quot;</span>, <span class="ruby-identifier">:second</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;56&quot;</span>, <span class="ruby-identifier">:ampm</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;AM&quot;</span>}    
+    <span class="ruby-ivar">@hash_12hr_time</span> = { <span class="ruby-identifier">:hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;12&quot;</span>, <span class="ruby-identifier">:minute</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;34&quot;</span>, <span class="ruby-identifier">:second</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;56&quot;</span>, <span class="ruby-identifier">:ampm</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;AM&quot;</span>}
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
