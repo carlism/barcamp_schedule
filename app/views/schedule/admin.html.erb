@@ -1,11 +1,3 @@
-<% #@days.each do |day| %>
-        <% #link_to_unless(day == @selected_day, day, :controller=>'schedule', :action=>'admin', :selected_day=>day) { day } %>
-<% #end %>
-<script language="javascript">
-	function newPresentation(ts, rm) {
-		new Ajax.request('<%=presentations_path%>?room_id='+rm+'timeslot_id='+ts, {asynchronous:true, evalScripts:true, method:'post'})
-	}
-</script>
 <table width="100%" cellspacing="0" class="schedule">
   <tr>
     <th width="10%">Time&nbsp;slot</th>
@@ -30,7 +22,7 @@
           </div>
         <% else %>
           <div id="<%="#{timeslot.id}_#{room.id}"%>" object="presentation" url="<%=url_for presentation%>.xml">
-            <a href="javascript:newPresentation(<%="#{timeslot.id}, #{room.id}"%>)">empty</a>
+            <%= link_to 'empty', :controller=>:presentations, :action=>:new, :params=>{:presentation=>{:room_id=>room.id, :timeslot_id=>timeslot.id}} %>
           </div>
         <% end %>
       </td>

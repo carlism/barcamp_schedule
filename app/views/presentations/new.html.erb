@@ -15,17 +15,11 @@
     <%= f.label :presenter_email %><br />
     <%= f.text_field :presenter_email %>
   </p>
-  <p>
-    <%= f.label :room_id %><br />
-    <%= f.collection_select( :room_id, Room.find(:all), :id, :name ) %>
-  </p>
-  <p>
-    <%= f.label :timeslot_id %><br />
-    <%= f.collection_select( :timeslot_id, Timeslot.find(:all), :id, :start_time ) %>
-  </p>
+    <%= f.hidden_field :room_id %>
+    <%= f.hidden_field :timeslot_id %>
   <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
 
-<%= link_to 'Back', presentations_path %>
+<%= link_to 'Back', :controller=>'schedule', :action=>'admin' %>

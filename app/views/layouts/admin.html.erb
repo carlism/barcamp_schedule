@@ -10,6 +10,11 @@
 	<%= yield :header %>
 </head>
   <body>
+    <a href="/schedule/admin">schedule</a> ||
+    <a href="/timeslots">timeslots</a> |
+    <a href="/rooms">rooms</a> |
+    <a href="/presentations">presentations</a> ||
+    <a href="/logout">logout</a>
 	<p style="color: green"><%= flash[:notice] %></p>
     <%= yield %>
   </body>

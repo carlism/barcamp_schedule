@@ -1,24 +1,20 @@
-<h1>Listing rooms</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Location</th>
-    <th>Capacity</th>
-  </tr>
-
 <% for room in @rooms %>
-  <tr>
-    <td><%=h room.name %></td>
-    <td><%=h room.location %></td>
-    <td><%=h room.capacity %></td>
-    <td><%= link_to 'Show', room %></td>
-    <td><%= link_to 'Edit', edit_room_path(room) %></td>
-    <td><%= link_to 'Destroy', room, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div id="<%=room.id%>" object="room" url="<%=url_for room%>.xml">
+<h2>
+  <span class="rest_in_place" attribute="name"><%=h room.name %></span>
+  <%= link_to image_tag("delete.png", :border=>0), room, :confirm => 'Are you sure?', :method => :delete %>
+</h2>
+location: <span class="rest_in_place" attribute="location"><%=h room.location %></span><br/>
+capacity: <span class="rest_in_place" attribute="capacity"><%=h room.capacity %></span><br/>
+</div>
 <% end %>
-</table>
 
 <br />
 
-<%= link_to 'New room', new_room_path %>
+<%= link_to_remote image_tag("add.png", :border=>0), 
+    :update=>'form_div',
+    :url=>new_room_path %>
+
+<div id="form_div">
+</div>
+

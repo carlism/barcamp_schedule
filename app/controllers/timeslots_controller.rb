@@ -1,5 +1,6 @@
 class TimeslotsController < ApplicationController
   before_filter :authorize
+  layout 'admin', :except=>[:edit,:new]
   
   # GET /timeslots
   # GET /timeslots.xml

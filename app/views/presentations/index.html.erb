@@ -14,8 +14,8 @@
     <td><%=h presentation.title %></td>
     <td><%=h presentation.presenter %></td>
     <td><%=h presentation.presenter_email %></td>
-    <td><%=h presentation.room_id %></td>
-    <td><%=h presentation.timeslot_id %></td>
+    <td><%=h presentation.room.name %></td>
+    <td><%=h presentation.timeslot.start_time.strftime("%I:%M %p") %></td>
     <td><%= link_to 'Show', presentation %></td>
     <td><%= link_to 'Edit', edit_presentation_path(presentation) %></td>
     <td><%= link_to 'Destroy', presentation, :confirm => 'Are you sure?', :method => :delete %></td>

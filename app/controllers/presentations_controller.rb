@@ -1,5 +1,6 @@
 class PresentationsController < ApplicationController
   before_filter :authorize
+  layout 'admin'
 
   # GET /presentations
   # GET /presentations.xml
@@ -26,7 +27,7 @@ class PresentationsController < ApplicationController
   # GET /presentations/new
   # GET /presentations/new.xml
   def new
-    @presentation = Presentation.new
+    @presentation = Presentation.new(params[:presentation])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,7 +48,7 @@ class PresentationsController < ApplicationController
     respond_to do |format|
       if @presentation.save
         flash[:notice] = 'Presentation was successfully created.'
-        format.html { redirect_to(@presentation) }
+        format.html { redirect_to(:controller=>'schedule', :action=>'admin') }
         format.xml  { render :xml => @presentation, :status => :created, :location => @presentation }
       else
         format.html { render :action => "new" }
