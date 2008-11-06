@@ -20,7 +20,7 @@
       <% presentation = @grid[ts_index][rm_index] %>
       <td>
         <%if !presentation.nil? and presentation.respond_to? :title%>
-          <strong><%=presentation.title%></strong><br/>
+          <strong><%=link_to presentation.title, presentation_path(presentation)%></strong><br/>
           <%=presentation.presenter%>
 		<% else %>
 			&nbsp;

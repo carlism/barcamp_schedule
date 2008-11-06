@@ -1,0 +1,3 @@
+<%=h @comment.name %> wrote:<br/>
+<%=h @comment.body %><em> at <%= (@comment.created_at - 5.hours).strftime("%I:%M %p")%></em>
+<hr/>

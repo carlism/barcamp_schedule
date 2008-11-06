@@ -1,0 +1,42 @@
+<h1><%= @presentation.timeslot.start_time.strftime("%I:%M %p") %> presentation</h1>
+<p>
+	<label>Title: </label>
+	<span class="field"><%= @presentation.title %></span>
+</p>
+<p>
+	<label>Presenter: </label>
+	<span class="field"><%= @presentation.presenter %></span>
+</p>
+<p>
+	<label>Room: </label>
+	<span class="field"><%= @presentation.room.name%> (<%=@presentation.room.location%>)</span>
+</p>
+
+<h1>Comments</h1>
+<div id="comments_<%=@presentation.id%>">
+<%@presentation.comments.each do |comment| %>
+<%=h comment.name %> wrote:<br/>
+<%=h comment.body %><em> at <%= (comment.created_at - 5.hours).strftime("%I:%M %p")%></em>
+<hr/>
+<% end %>
+</div>
+
+<h1>Add a comment</h1>
+<% remote_form_for(@comment) do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.hidden_field :presentation_id, :value=>@presentation.id %>
+  <p>
+    <%= f.label :name %> <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :body, :cols=>60, :rows=>4 %>
+  </p>
+  <p>
+    <%= f.label :email %> (won't be shown) <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

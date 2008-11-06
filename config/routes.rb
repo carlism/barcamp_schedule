@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comments
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   map.resources :presentations

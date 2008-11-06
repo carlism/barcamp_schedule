@@ -11,7 +11,7 @@
 <div class="toolbar">
     <h1 id="pageTitle"></h1>
     <a id="backButton" class="button" href="#"></a>
-    <a class="button" href="#all_rooms">View All</a>
+    <!-- a class="button" href="#all_rooms">View All</a -->
 </div>
 
 <ul id="all_rooms" title="All Rooms" selected="true">
@@ -35,7 +35,33 @@
 		<li>Time: <%=timeslot.start_time.strftime("%I:%M %p")%></li>
 		<li>Room: <%=room.name%> (<%=room.location%>)</li>
 		<li>Presenter: <%=presentation.presenter%></li>
+		<li><a href="#new_comment_<%=presentation.id%>">Add a comment</a></li>
+		<li class="group">comments</li>
+		<%presentation.comments.each do |comment| %>
+		<li><%=h comment.name %> wrote: <%=h comment.body %><em> at <%= (comment.created_at - 5.hours).strftime("%I:%M %p")%></em></li>
+		<%end%>
 	</ul>
+	
+	<% remote_form_for(Comment.new, :html => { :class=>'panel', :id=>"new_comment_#{presentation.id}" }) do |f| %>
+    <h2>New Comment</h2>
+    <fieldset>
+  		<%= f.hidden_field :presentation_id, :value=>presentation.id %>
+        <div class="row">
+      		<%= f.label :name %> <%= f.text_field :name %>
+		</div>
+        <div class="row">
+	  		<%= f.label :comment %><%= f.text_area :body, :cols=>60, :rows=>4 %>
+		</div>
+  		<div class="row">
+      		<%= f.label :email %>  <%= f.text_field :email %>
+		</div>
+  		<!-- div class="row">
+      		<%= f.submit "Create" %>
+		</div -->
+	</fieldset>	
+    <a class="whiteButton" type="submit" href="#">Create</a>
+	<% end %>
+	
 	<% end %>
 	<% end %>
 <% end %>
