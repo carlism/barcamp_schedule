@@ -1,4 +1,7 @@
-<h1><%= @presentation.timeslot.start_time.strftime("%I:%M %p") %> presentation</h1>
+<h1>
+    <%= @presentation.timeslot.start_time.strftime("%I:%M %p") %> - 
+    <%= @presentation.title %> &nbsp;&nbsp;&nbsp; <%=link_to 'back to schedule', '/schedule'%>
+</h1>
 <p>
 	<label>Title: </label>
 	<span class="field"><%= @presentation.title %></span>
