@@ -12,7 +12,7 @@
 	<span class="field"><%= @presentation.room.name%> (<%=@presentation.room.location%>)</span>
 </p>
 
-<h1>Comments</h1>
+<h1>Comments &nbsp;&nbsp;&nbsp; <a href="#comment_form">add a comment</a></h1>
 <div id="comments_<%=@presentation.id%>">
 <%@presentation.comments.each do |comment| %>
 <%=h comment.name %> wrote:<br/>
@@ -21,7 +21,7 @@
 <% end %>
 </div>
 
-<h1>Add a comment</h1>
+<h1><a name="comment_form">Add a comment</a></h1>
 <% remote_form_for(@comment) do |f| %>
   <%= f.error_messages %>
 

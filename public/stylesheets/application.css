@@ -39,6 +39,10 @@ h1 {
 	background-position: bottom;
 	vertical-align: top;
 }
+h1 a:link, h1 a:visited {
+	font: normal normal normal .8em Arial, sans-serif;
+	color: white;
+}
 
 label {
 	font: italic normal bold 1em Arial, sans-serif;
