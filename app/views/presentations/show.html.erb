@@ -18,8 +18,8 @@
 <h1>Comments &nbsp;&nbsp;&nbsp; <a href="#comment_form">add a comment</a></h1>
 <div id="comments_<%=@presentation.id%>">
 <%@presentation.comments.each do |comment| %>
-<%=h comment.name %> wrote:<br/>
-<%=h comment.body %><em> at <%= (comment.created_at - 5.hours).strftime("%I:%M %p")%></em>
+<span style="color:#666;"><%=h comment.name %> wrote:</span>
+<%=h comment.body %><em style="color:#666;"> at <%= (comment.created_at - 5.hours).strftime("%I:%M %p")%></em>
 <hr/>
 <% end %>
 </div>
