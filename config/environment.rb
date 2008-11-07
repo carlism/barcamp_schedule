@@ -49,7 +49,7 @@ Rails::Initializer.run do |config|
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_bcp_schedule_session',
-    :secret      => 'f468ab8fe2f66cfd0300581516a30474d0306575b3122d9711235a291698bfb93ceb81ca97472f5f3ced78b369b6925051b70b532e825917e199609d4dc70f7d'
+    :secret      => 'a22409943d82edcfd79d7631314413caa22409943d82edcfdcfd79d7631314413caa22409943d82edcf'
   }
 
   # Use the database for sessions instead of the cookie-based default,
