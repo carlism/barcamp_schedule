@@ -8,9 +8,15 @@ table.schedule tr th {
 	color: white;
 	background-image: url(../images/table_header.gif);
 	background-repeat: repeat-x;
-	background-color: white;
-	border-right: 1px solid #003F83;
+	background-color: #003F83;
+    background-position: bottom;
+	border-right: 1px solid #FFFFFF;
+	border-top: 1px solid #003F83;
 	vertical-align: top;
+}
+
+table.schedule tr th:last-child {
+	border-right: 1px solid #003F83;
 }
 
 table.schedule tr td {
