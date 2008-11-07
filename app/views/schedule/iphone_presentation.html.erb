@@ -15,9 +15,8 @@
     <li><%=@presentation.room.name%> (<%=@presentation.room.location%>)</li>
     <li class="group">Presenter</li>
     <li><%=@presentation.presenter%></li>
-    <li class="group">Actions</li>
-    <li><a class="button" href="#new_comment">Add a comment</a></li>
     <li class="group">comments</li>
+    <li><a class="whiteButton" href="#new_comment">Add a comment</a></li>
     <%@presentation.comments.each do |comment| %>
     <li><%=h comment.name %> wrote: <%=h comment.body %><em> at <%= (comment.created_at - 5.hours).strftime("%I:%M %p")%></em></li>
     <%end%>
