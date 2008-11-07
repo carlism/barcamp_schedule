@@ -1,5 +1,5 @@
 class PresentationsController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize, :except=>:show
   layout 'admin'
 
   # GET /presentations
@@ -16,10 +16,11 @@ class PresentationsController < ApplicationController
   # GET /presentations/1
   # GET /presentations/1.xml
   def show
-    @presentation = Presentation.find(params[:id])
-
+    @presentation = Presentation.find(params[:id])    
+    @comment = Comment.new
+      
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout=>"application" }# show.html.erb
       format.xml  { render :xml => @presentation }
     end
   end

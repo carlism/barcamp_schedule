@@ -11,7 +11,7 @@
 <div class="toolbar">
     <h1 id="pageTitle"></h1>
     <a id="backButton" class="button" href="#"></a>
-    <a class="button" href="#all_rooms">View All</a>
+    <a class="button" href="#all_rooms">Schedule</a>
 </div>
 
 <ul id="all_rooms" title="All Rooms" selected="true">
@@ -20,22 +20,15 @@
 	<% @rooms.each_with_index do |room, rm_index| %>
 	    <% presentation = @grid[ts_index][rm_index] %>
 	      <%if !presentation.nil? and presentation.respond_to? :title%>
-	        <li><a href="#pres_<%=presentation.id%>"><%=room.name%>: <%=presentation.title%></a></li>
+	        <li>
+                <%=link_to "#{room.name}: #{presentation.title}",
+                        :controller=>:schedule,
+                        :action=>:iphone_presentation,
+                        :params=>{:id=>presentation.id}
+                %>
+                <!--a href="#pres_<%=presentation.id%>"><%=room.name%>: <%=presentation.title%></a -->
+            </li>
 	      <% end %>
 	  <% end %>
 	<% end %>
 </ul>
-
-
-<% @timeslots.each_with_index do |timeslot, ts_index| %>
-	<% @rooms.each_with_index do |room, rm_index| %>
-	<% presentation = @grid[ts_index][rm_index] %>
-	<%if !presentation.nil? and presentation.respond_to? :title%>
-	<ul id="pres_<%=presentation.id%>" title="<%=presentation.title%>">
-		<li>Time: <%=timeslot.start_time.strftime("%I:%M %p")%></li>
-		<li>Room: <%=room.name%> (<%=room.location%>)</li>
-		<li>Presenter: <%=presentation.presenter%></li>
-	</ul>
-	<% end %>
-	<% end %>
-<% end %>

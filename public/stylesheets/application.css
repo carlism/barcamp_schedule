@@ -33,3 +33,29 @@ table.schedule tr th:first-child {
 table.schedule tr td:first-child {
 	border-left: 1px solid #003F83;
 }
+
+h1 {
+	font: normal normal bold 1.2em Arial, sans-serif;
+	padding: 3px 5px;
+	color: white;
+	background-image: url(../images/table_header.gif);
+	background-repeat: repeat-x;
+	background-color: #003F83;
+	background-position: bottom;
+	vertical-align: top;
+}
+h1 a:link, h1 a:visited {
+	font: normal normal normal .8em Arial, sans-serif;
+	color: white;
+}
+
+label {
+	font: italic normal bold 1em Arial, sans-serif;
+}
+
+span.field {
+	font: normal normal normal 1.1em Arial, sans-serif;
+	background-color: #CCC;
+	border: 2px ridge #003F83;
+	padding: 2px;
+}

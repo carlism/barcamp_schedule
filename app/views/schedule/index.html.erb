@@ -4,23 +4,27 @@
 
 <table class="schedule" cellspacing="0" width="100%">
   <tr>
-    <th width="10%">Time&nbsp;slot</th>
-    <% @rooms.each do |room| %>
-      <th width="<%=90/@rooms.size%>%">
-        <%=room.name%> (<%=room.location%>)
+
+    <th width="10%">Room</th>
+    <% @timeslots.each do |timeslot| %>
+      <th width="<%=90/@timeslots.size%>%">
+        <%=timeslot.start_time.strftime("%I:%M %p")%>
       </th>
     <% end %>
+
   </tr>
-  <% @timeslots.each_with_index do |timeslot, ts_index| %>
+
+
+  <% @rooms.each_with_index do |room, rm_index| %>
     <tr>
       <td>
-        <%=timeslot.start_time.strftime("%I:%M %p")%>
+        <%=room.name%> (<%=room.location%>)
       </td>
-    <% @rooms.each_with_index do |room, rm_index| %>
+    <% @timeslots.each_with_index do |timeslot, ts_index| %>
       <% presentation = @grid[ts_index][rm_index] %>
       <td>
         <%if !presentation.nil? and presentation.respond_to? :title%>
-          <strong><%=presentation.title%></strong><br/>
+          <strong><%=link_to presentation.title, presentation_path(presentation)%></strong><br/>
           <%=presentation.presenter%>
 		<% else %>
 			&nbsp;
@@ -29,4 +33,5 @@
     <% end %>
     </tr>
   <% end %>
+
 </table>
