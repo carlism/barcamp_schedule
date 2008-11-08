@@ -3,7 +3,7 @@
 <% end %>
 <% content_for :header do %>
 	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-	<%= stylesheet_link_tag "../iui/iui.css", :media => "screen" %>
+	<%= stylesheet_link_tag "../iui/iuix.css", :media => "screen" %>
 	<%= javascript_include_tag "../iui/iui.js" %>
 <% end %>
 
@@ -17,7 +17,7 @@
     <li><%=@presentation.presenter%></li>
     <li class="group">comments</li>
     <li><a class="whiteButton" href="#new_comment">Add a comment</a></li>
-    <%@presentation.comments.each do |comment| %>
+    <%@presentation.comments[0..20].each do |comment| %>
     <li>
         <span style="color: #666;"><%=h comment.name %> wrote: </span>
         <%=h comment.body %><em style="color: #666;"> at <%= (comment.created_at - 5.hours).strftime("%I:%M %p")%></em>

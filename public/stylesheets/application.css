@@ -27,6 +27,10 @@ table.schedule tr td {
 	background-color: white;
 }
 
+table.schedule tr td a {
+    text-decoration: none;
+}
+
 table.schedule tr th:first-child {
 	border-left: 1px solid #003F83;
 }
