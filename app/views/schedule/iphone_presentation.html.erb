@@ -1,5 +1,5 @@
-<% content_for :content_for_title do %>
-	BarCamp Philly
+<% content_for :title do %>
+	<%=@presentation.title%>
 <% end %>
 <% content_for :header do %>
 	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
@@ -9,6 +9,8 @@
 
 
 <ul id="iphone_presentation" title="<%=@presentation.title%>" selected="true">
+    <li class="group">Title</li>
+    <li><%=@presentation.title%></li>
     <li class="group">Time</li>
     <li><%=@presentation.timeslot.start_time.strftime("%I:%M %p")%></li>
     <li class="group">Room</li>
@@ -17,6 +19,11 @@
     <li><%=@presentation.presenter%></li>
     <li class="group">comments</li>
     <li><a class="whiteButton" href="#new_comment">Add a comment</a></li>
+    <li><%=link_to "Refresh comments",
+                {:controller=>:schedule,
+                :action=>:iphone_presentation,
+                :params=>{:id=>@presentation.id}}, {:class=>"whiteButton"}%>
+    </li>
     <%@presentation.comments[0..20].each do |comment| %>
     <li>
         <span style="color: #666;"><%=h comment.name %> wrote: </span>

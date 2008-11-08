@@ -35,10 +35,14 @@ class ScheduleController < ApplicationController
 
   def iphone_presentation
     @presentation = Presentation.find(params[:id], :include=>[:comments])
-
     render :layout=>"iphone"
   end
 
   def mobile
+    index
+  end
+
+  def mobile_presentation
+    @presentation = Presentation.find(params[:id], :include=>[:comments])
   end
 end

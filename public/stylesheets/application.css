@@ -38,6 +38,14 @@ table.schedule tr td:first-child {
 	border-left: 1px solid #003F83;
 }
 
+ul li a {
+	text-decoration: none;
+}
+
+ul li {
+	list-style-type: none;
+}
+
 h1 {
 	font: normal normal bold 1.2em Arial, sans-serif;
 	padding: 3px 5px;

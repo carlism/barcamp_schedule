@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login 'login', :controller => 'sessions', :action => 'new'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
   map.iphone 'iphone', :controller=>'schedule', :action=>'iphone'
+  map.mobile 'mobile', :controller=>'schedule', :action=>'mobile'
 
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
