@@ -25,7 +25,7 @@ protected
   end
 
   def admin?
-    session[:password] == 'bcph1lly'
+    session[:password] == 'bcp'
   end 
   
 end
