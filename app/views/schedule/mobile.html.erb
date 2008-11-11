@@ -21,6 +21,7 @@
                       :action=>:mobile_presentation,
                       :params=>{:id=>presentation.id}
             %>
+            <%=" by #{presentation.presenter}" if not presentation.presenter.empty? %>
         </li>
     <% end %>
   <% end %>
