@@ -10,7 +10,13 @@
 	<%= yield :header %>
 </head>
   <body>
-    <a href="http://www.barcampphilly.org/"><img src="http://www.barcampphilly.org/images/barcamp_badge_250px.png" alt="BarCamp Philly" border="0" /></a>
+    <div style="float:left;">
+    <a href="http://www.barcampphilly.org/"><img src="http://www.barcampphilly.org/images/barcamp_badge_250px.png" alt="BarCamp Philly" border="0" /></a></div>
+    <ul>
+        <li><a href="/iphone">iPhone edition</a></li>
+        <li><a href="/mobile">Mobile edition</a> (no table)</li>
+    </ul>
+    <br clear="all"/>
 	<p style="color: green"><%= flash[:notice] %></p>
     <%= yield %>
   </body>
