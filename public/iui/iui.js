@@ -18,6 +18,8 @@ var pageHistory = [];
 var newPageCount = 0;
 var checkTimer;
 
+var currPos = 1;
+
 // *************************************************************************************************
 
 window.iui =
@@ -205,7 +207,8 @@ function checkOrientAndLocation()
         currentWidth = window.innerWidth;
         var orient = currentWidth == 320 ? "profile" : "landscape";
         document.body.setAttribute("orient", orient);
-        setTimeout(scrollTo, 100, 0, 1);
+		alert("scrolling to" + currPos);
+        setTimeout(scrollTo, 100, 0, currPos);
     }
 
     if (location.hash != currentHash)

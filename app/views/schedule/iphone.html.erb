@@ -16,7 +16,7 @@
 
 <ul id="all_rooms" title="All Rooms" selected="true">
   <% @timeslots.each_with_index do |timeslot, ts_index| %>
-  <li class="group"><%=timeslot.start_time.strftime("%I:%M %p")%></li>
+  <li class="group" id="<%=timeslot.start_time.strftime("%H-%M")%>"><%=timeslot.start_time.strftime("%I:%M %p")%></li>
 	<% @rooms.each_with_index do |room, rm_index| %>
 	    <% presentation = @grid[ts_index][rm_index] %>
 	      <%if !presentation.nil? and presentation.respond_to? :title%>
@@ -39,3 +39,6 @@
 	<% end %>
 	<% end %>
 <% end %>
+<script language="javascript">
+startScroll();
+</script>

@@ -3,6 +3,47 @@
     <title><%= yield :title %></title>
     <script type="text/javascript">
         rails_authenticity_token = '<%= form_authenticity_token %>'
+
+        function startScroll(){
+          var now = new Date();
+          var minute = now.getMinutes();
+          var hour = now.getHours();
+          while (minute % 15 != 0){ minute--; }
+          findDiv(hour,minute)
+        }
+
+        function calcDivId(hour, minute){
+          if (hour<10) hour = "0"+ hour;
+          if (minute<10) minute = "0" + minute;          
+          var divid = hour + '-' +  minute;
+          return divid;  
+        }
+        
+        function findDiv(hour,minute){
+          divid = calcDivId(hour,minute);
+          if (document.getElementById(divid)){
+            //scrollToTime(divid);
+            iui.currPos= document.getElementById(divid).offsetTop; 
+            alert('currPos:' + currPos);      
+          }else{
+            if (minute==0){
+              hour--;
+              minute=45;
+            }else{
+              minute-=15;
+            }
+            // just to stop infinite loop
+            if (hour > 0){
+              findDiv(hour,minute)              
+            }
+          }          
+        }
+        
+        function scrollToTime(divid){
+          var slotdiv = document.getElementById(divid);          
+          window.scrollTo(0,slotdiv.offsetTop); 
+          alert('scrolled:' + divid);         
+        }
     </script>
 	<%= yield :header %>
 </head>

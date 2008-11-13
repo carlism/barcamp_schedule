@@ -28,4 +28,9 @@ protected
     session[:password] == 'bcph1lly'
   end 
   
+  def is_iphone?
+      request.user_agent =~ /(Mobile\/.+Safari)/
+  end
+    
+  
 end
