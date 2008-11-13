@@ -7,5 +7,12 @@ TO-DO:
 * Improve security around the admin pages
 * Add an all-comments page
 * Add drag and drop to schedule/admin view for rearranging the presentations
-* Add timeblocks for showing "Planning" and or "Lunch" in the schedule
+* Add timeblocks for showing "Planning" and or "Lunch" in the scheduler
+
+Twitter integration ideas:
+
+* Add links to display text.  Link @user words to twitter.com/user and #tags to search.twitter.com/search?q=tags
+* Add #tag suggestions per presentation, ie. #bcp_40
+* Investigate background tasks to search twitter for #bcp_nn type tags and post them to the presentation comments
+
 
