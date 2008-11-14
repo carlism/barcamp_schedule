@@ -7,6 +7,10 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.1.1' unless defined? RAILS_GEM_VERSION
 
+TWITTER_USER = 'dktester'
+TWITTER_PASS = 'password'
+TWITTER_PREFIX= 'bcp'
+
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
@@ -49,7 +53,7 @@ Rails::Initializer.run do |config|
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_bcp_schedule_session',
-    :secret      => 'f468ab8fe2f66cfd0300581516a30474d0306575b3122d9711235a291698bfb93ceb81ca97472f5f3ced78b369b6925051b70b532e825917e199609d4dc70f7d'
+    :secret      => 'a22409943d82edcfd79d7631314413caa22409943d82edcfdcfd79d7631314413caa22409943d82edcf'
   }
 
   # Use the database for sessions instead of the cookie-based default,
@@ -65,3 +69,6 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
+
+require 'httparty'
+require 'twitter'

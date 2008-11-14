@@ -1,7 +1,7 @@
 <html>
   <head>
     <title><%= yield :title %></title>
-    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag :defaults, :cache => "cache/all" %>
     <%= javascript_include_tag "rest_in_place" %>
     <script type="text/javascript">
         rails_authenticity_token = '<%= form_authenticity_token %>'
@@ -10,6 +10,13 @@
 	<%= yield :header %>
 </head>
   <body>
+    <div style="float:left;">
+    <a href="http://www.barcampphilly.org/"><img src="http://www.barcampphilly.org/images/barcamp_badge_250px.png" alt="BarCamp Philly" border="0" /></a></div>
+    <ul>
+        <li><a href="/iphone">iPhone edition</a></li>
+        <li><a href="/mobile">Mobile edition</a> (no table)</li>
+    </ul>
+    <br clear="all"/>
 	<p style="color: green"><%= flash[:notice] %></p>
     <%= yield %>
   </body>

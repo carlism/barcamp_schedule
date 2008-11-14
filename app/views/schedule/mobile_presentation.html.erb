@@ -1,0 +1,47 @@
+<% content_for :title do %>
+	<%=@presentation.title%>
+<% end %>
+
+<a name="top_of_page"/>
+<h1><%=@presentation.title%> &nbsp;&nbsp;&nbsp; <%=link_to '&lt;&nbsp;Back&nbsp;to&nbsp;schedule', '/schedule/mobile'%> </h1>
+
+<dl>
+    <dt>Title</dt><dd><%=@presentation.title%></dd>
+    <dt>Time</dt>
+    <dd><%=@presentation.timeslot.start_time.strftime("%I:%M %p")%></dd>
+    <dt>Room</dt>
+    <dd><%=@presentation.room.name%> (<%=@presentation.room.location%>)</dd>
+    <dt>Presenter</dt>
+    <dd><%=@presentation.presenter%></dd>
+</dl>
+
+<h1>Comments 
+	&nbsp;&nbsp;&nbsp; <a href="#comment_form">+&nbsp;Add&nbsp;a&nbsp;comment</a> 
+</h1>
+<div id="comments_<%=@presentation.id%>">
+<%@presentation.comments[0..20].each do |comment| %>
+<hr/>
+<span style="color: #666;"><%=h comment.name %> wrote: </span>
+<%=h comment.body %><em style="color: #666;"> at <%= (comment.created_at - 5.hours).strftime("%I:%M %p")%></em>
+<%end%>
+<hr/>
+</div>
+
+<h1><a name="comment_form">Add a comment</a> &nbsp;&nbsp;&nbsp; <a href="#top_of_page">^&nbsp;Back&nbsp;to&nbsp;top</a></h1>
+<% remote_form_for(Comment.new) do |f| %>
+  <%= f.hidden_field :presentation_id, :value=>@presentation.id %>
+  <p>
+    <%= f.label :name %> <%= f.text_field :name, :size=>20 %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :body, :cols=>20, :rows=>2 %>
+  </p>
+  <p>
+    <%= f.label :email %> (won't be shown) <%= f.text_field :email, :size=>20 %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+

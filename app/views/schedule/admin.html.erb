@@ -1,24 +1,25 @@
 <table width="100%" cellspacing="0" class="schedule">
   <tr>
-    <th width="10%">Time&nbsp;slot</th>
-    <% @rooms.each do |room| %>
-      <th width="<%=90/@rooms.size%>%">
-        <%=room.name%> (<%=room.location%>)
+    <th width="10%">Room</th>
+    <% @timeslots.each do |timeslot| %>
+      <th width="<%=90/@timeslots.size%>%">
+        <%=timeslot.start_time.strftime("%I:%M %p")%>
       </th>
     <% end %>
   </tr>
-  <% @timeslots.each_with_index do |timeslot, ts_index| %>
+  <% @rooms.each_with_index do |room, rm_index| %>
     <tr>
       <td>
-        <%=timeslot.start_time.strftime("%I:%M %p")%>
+        <%=room.name%> (<%=room.location%>)
       </td>
-    <% @rooms.each_with_index do |room, rm_index| %>
+    <% @timeslots.each_with_index do |timeslot, ts_index| %>
       <% presentation = @grid[ts_index][rm_index] %>
       <td>
         <%if !presentation.nil? and presentation.respond_to? :title%>
           <div id="<%="#{timeslot.id}_#{room.id}"%>" object="presentation" url="<%=url_for presentation%>.xml">
             <span class='rest_in_place' attribute="title"><%=presentation.title%></span><br/>
-            <span class='rest_in_place' attribute="presenter"><%=presentation.presenter%></span>
+            <span class='rest_in_place' attribute="presenter"><%=presentation.presenter%></span><br/>
+            <span class='rest_in_place' attribute="presenter_email"><%=presentation.presenter_email%></span>
           </div>
         <% else %>
           <div id="<%="#{timeslot.id}_#{room.id}"%>" object="presentation" url="<%=url_for presentation%>.xml">

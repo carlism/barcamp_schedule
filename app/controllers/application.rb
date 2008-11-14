@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
-  protect_from_forgery # :secret => 'a22409943d82edcfd79d7631314413ca'
+  # protect_from_forgery # :secret => 'a22409943d82edcfd79d7631314413ca'
   
   # See ActionController::Base for details 
   # Uncomment this to filter the contents of submitted sensitive data parameters
@@ -25,12 +25,16 @@ protected
   end
 
   def admin?
-    session[:password] == 'bcph1lly'
+    session[:password] == 'bcp'
   end 
   
   def is_iphone?
       request.user_agent =~ /(Mobile\/.+Safari)/
   end
     
+  def get_tweet_hash
+    chars = ("A".."Z").to_a + ("1".."9").to_a 
+    return "#" + TWEET_PREFIX + Array.new(6, '').collect{chars[rand(chars.size)]}.join
+  end
   
 end

@@ -1,0 +1,3 @@
+page.insert_html :top, "comments_#{@comment.presentation_id}", :partial=>'show'
+page.form.reset 'new_comment'
+page["comments_#{@comment.presentation_id}"].visual_effect :scroll_to

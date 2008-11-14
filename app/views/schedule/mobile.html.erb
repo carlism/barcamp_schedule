@@ -1,2 +1,30 @@
-<h1>Schedule#mobile</h1>
-<p>Find me in app/views/schedule/mobile.html.erb</p>
+<% content_for :title do %>
+	BarCamp Philly
+<% end %>
+<h1><a name="top_of_page">Barcamp Philly Schedule</a></h1>
+<ul>
+	<% @timeslots.each_with_index do |timeslot, ts_index| %>
+	<li><a href="#ts_<%=ts_index%>"><%=timeslot.start_time.strftime("%I:%M %p")%></a></li>
+	<% end %>
+</ul>
+
+<% @timeslots.each_with_index do |timeslot, ts_index| %>
+<h1><a name="ts_<%=ts_index%>"><%=timeslot.start_time.strftime("%I:%M %p")%></a></h1>
+<a href="#top_of_page">Back to top</a>
+<ul>
+  <% @rooms.each_with_index do |room, rm_index| %>
+    <% presentation = @grid[ts_index][rm_index] %>
+    <%if !presentation.nil? and presentation.respond_to? :title%>
+		<li>
+			<%=link_to "#{room.name}: #{presentation.title}",
+                      :controller=>:schedule,
+                      :action=>:mobile_presentation,
+                      :params=>{:id=>presentation.id}
+            %>
+            <%=" by #{presentation.presenter}" if not presentation.presenter.empty? %>
+        </li>
+    <% end %>
+  <% end %>
+</ul>
+<% end %>
+

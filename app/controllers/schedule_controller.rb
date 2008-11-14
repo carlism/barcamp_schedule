@@ -14,7 +14,8 @@ class ScheduleController < ApplicationController
       end
       @grid << row
     end
-    Presentation.find(:all).each do |presentation|
+    @presentations ||= Presentation.find(:all)
+    @presentations.each do |presentation|
       room_index = @rooms.index(presentation.room)
       timeslot_index = @timeslots.index(presentation.timeslot)
       if( room_index and timeslot_index )
@@ -32,6 +33,16 @@ class ScheduleController < ApplicationController
     render :layout=>"iphone"
   end
 
+  def iphone_presentation
+    @presentation = Presentation.find(params[:id], :include=>[:comments])
+    render :layout=>"iphone"
+  end
+
   def mobile
+    index
+  end
+
+  def mobile_presentation
+    @presentation = Presentation.find(params[:id], :include=>[:comments])
   end
 end
