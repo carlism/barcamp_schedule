@@ -28,4 +28,13 @@ protected
     session[:password] == 'bcp'
   end 
   
+  def is_iphone?
+      request.user_agent =~ /(Mobile\/.+Safari)/
+  end
+    
+  def get_tweet_hash
+    chars = ("A".."Z").to_a + ("1".."9").to_a 
+    return "#" + TWEET_PREFIX + Array.new(6, '').collect{chars[rand(chars.size)]}.join
+  end
+  
 end

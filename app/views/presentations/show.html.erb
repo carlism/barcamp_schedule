@@ -15,8 +15,9 @@
 	<label>Room: </label>
 	<span class="field"><%= @presentation.room.name%> (<%=@presentation.room.location%>)</span>
 </p>
-
+<%- if @presentation.comments.size > 0  -%>
 <h1>Comments &nbsp;&nbsp;&nbsp; <a href="#comment_form">+ Add a comment</a></h1>
+<% end %>
 <div id="comments_<%=@presentation.id%>">
 <%@presentation.comments[0..20].each do |comment| %>
 <span style="color:#666;"><%=h comment.name %> wrote:</span>

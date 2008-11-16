@@ -18,7 +18,7 @@ class PresentationsController < ApplicationController
   def show
     @presentation = Presentation.find(params[:id])    
     @comment = Comment.new
-      
+        
     respond_to do |format|
       format.html { render :layout=>"application" }# show.html.erb
       format.xml  { render :xml => @presentation }
@@ -45,10 +45,14 @@ class PresentationsController < ApplicationController
   # POST /presentations.xml
   def create
     @presentation = Presentation.new(params[:presentation])
+    @presentation.tweet_hash = get_tweet_hash
 
     respond_to do |format|
       if @presentation.save
         flash[:notice] = 'Presentation was successfully created.'
+        # post a twitter note with random hash and presentation name
+        twit = Twitter::Base.new(TWITTER_USER, TWITTER_PASS)
+        twit.post("To post notes to \"" + @presentation.title[0..80] + "\" post using " + @presentation.tweet_hash)
         format.html { redirect_to(:controller=>'schedule', :action=>'admin') }
         format.xml  { render :xml => @presentation, :status => :created, :location => @presentation }
       else

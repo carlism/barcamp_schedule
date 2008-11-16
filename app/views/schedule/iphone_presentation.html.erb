@@ -18,7 +18,9 @@
     <li class="group">Presenter</li>
     <li><%=@presentation.presenter%></li>
     <li class="group">comments</li>
+    <%- if @presentation.comments.size > 0  -%>
     <li><a class="whiteButton" href="#new_comment">Add a comment</a></li>
+    <% end %>
     <li><%=link_to "Refresh comments",
                 {:controller=>:schedule,
                 :action=>:iphone_presentation,

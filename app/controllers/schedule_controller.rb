@@ -1,5 +1,5 @@
 class ScheduleController < ApplicationController
-  before_filter :authorize, :only => :admin
+  before_filter :is_iphone?, :authorize, :only => :admin
   
   def index
     @days = Timeslot.find(:all, :select=>'distinct day').map{|ts| ts.day }

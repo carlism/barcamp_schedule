@@ -16,7 +16,7 @@
 
 <ul id="all_rooms" title="Barcamp Philly Schedule" selected="true">
   <% @timeslots.each_with_index do |timeslot, ts_index| %>
-  <li><a href="#ts_<%=ts_index%>"><%=timeslot.start_time.strftime("%I:%M %p")%></a></li>
+  <li class="group" id="<%=timeslot.start_time.strftime("%H-%M")%>"><a href="#ts_<%=ts_index%>"><%=timeslot.start_time.strftime("%I:%M %p")%></a></li>
   <% end %>
 </ul>
 
@@ -36,3 +36,6 @@
 	  <% end %>
 </ul>
 <% end %>
+<script language="javascript">
+startScroll();
+</script>
