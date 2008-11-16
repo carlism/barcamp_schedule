@@ -16,15 +16,23 @@
       <% presentation = @grid[ts_index][rm_index] %>
       <td>
         <%if !presentation.nil? and presentation.respond_to? :title%>
-          <div id="<%="#{timeslot.id}_#{room.id}"%>" object="presentation" url="<%=url_for presentation%>.xml">
-            <span class='rest_in_place' attribute="title"><%=presentation.title%></span><br/>
-            <span class='rest_in_place' attribute="presenter"><%=presentation.presenter%></span><br/>
-            <span class='rest_in_place' attribute="presenter_email"><%=presentation.presenter_email%></span>
+          <div id="presentation_<%="#{timeslot.id}_#{room.id}"%>">
+            <%=presentation.title%><br/>
+            <%=presentation.presenter%><br/>
+            <%=presentation.presenter_email%>
           </div>
+         <script>
+			new Draggable('presentation_<%="#{timeslot.id}_#{room.id}"%>', { revert: true });
+			Droppables.add('presentation_<%="#{timeslot.id}_#{room.id}"%>');
+         </script>
         <% else %>
-          <div id="<%="#{timeslot.id}_#{room.id}"%>" object="presentation" url="<%=url_for presentation%>.xml">
+          <div id="empty_<%="#{timeslot.id}_#{room.id}"%>" object="presentation" url="<%=url_for presentation%>.xml">
             <%= link_to 'empty', :controller=>:presentations, :action=>:new, :params=>{:presentation=>{:room_id=>room.id, :timeslot_id=>timeslot.id}} %>
           </div>
+         <script>
+			new Draggable('empty_<%="#{timeslot.id}_#{room.id}"%>', { revert: true, scroll: window });
+			Droppables.add('empty_<%="#{timeslot.id}_#{room.id}"%>');
+         </script>
         <% end %>
       </td>
     <% end %>

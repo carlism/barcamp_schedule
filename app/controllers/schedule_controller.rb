@@ -26,6 +26,7 @@ class ScheduleController < ApplicationController
 
   def admin
     index
+    render :layout=>"admin"
   end
 
   def iphone
