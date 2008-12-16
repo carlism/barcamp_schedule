@@ -2,6 +2,12 @@ This is a scheduling app for managing a one-day barcamp or other sort of user-dr
 
 This software is provided under the MIT License. See doc/LICENSE.
 
+Features:
+* Browser and iPhone interface for viewing the schedule.
+* Commenting system for in-presentation discussion or notes.
+* Admin interface for quick entry and adjustment of schedule.
+* Some twitter integration available.
+
 TO-DO:
 * Extend for a multi-day event
 * Improve security around the admin pages
