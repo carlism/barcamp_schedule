@@ -1,7 +1,6 @@
 <script type="text/javascript" charset="utf-8">
 	function dropped(draggable, droppable, event) {
-		alert("dropped: " + draggable.id + " on " + droppable.id);
-		new Ajax.Request('/presentations/swap', {asynchronous:true, evalScripts:true});
+		new Ajax.Request('/presentations/swap?from='+draggable.id+'&to='+droppable.id, {asynchronous:true, evalScripts:true});
 		event.stopPropagation();
 	}
 </script>
@@ -22,11 +21,11 @@
       </td>
     <% @timeslots.each_with_index do | timeslot, ts_index| %>
       <% @presentation = @grid[ts_index][rm_index] %>
-	  <% @timeslot = timeslot %>	
-	  <% @room = room %>
-      <td>
+	  <% @timeslot_id = timeslot.id %>	
+	  <% @room_id = room.id %>
+      <td><div id="cell_<%=@timeslot_id%>.<%=@room_id%>">
 		<%=render :partial=>'presentation'%>
-      </td>
+      </div></td>
     <% end %>
     </tr>
   <% end %>

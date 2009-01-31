@@ -13,14 +13,14 @@
 	Droppables.add('presentation_<%="#{@presentation.id}"%>', { hoverclass: 'hovering', onDrop: dropped });
  </script>
 <% else %>
-  <div id="empty_<%="#{@timeslot.id}.#{@room.id}"%>" class="presentation">
+  <div id="empty_<%="#{@timeslot_id}.#{@room_id}"%>" class="presentation">
 	<div class="buttons" style="float: right;">
 		<%= image_tag 'replace.png' %><br/>
 	</div>
-    <%= link_to 'empty', :controller=>:presentations, :action=>:new, :params=>{:presentation=>{:room_id=>@room.id, :timeslot_id=>@timeslot.id}} %>
+    <%= link_to 'empty', :controller=>:presentations, :action=>:new, :params=>{:presentation=>{:room_id=>@room_id, :timeslot_id=>@timeslot_id}} %>
   </div>
  <script>
-	new Draggable('empty_<%="#{@timeslot.id}.#{@room.id}"%>', { revert: true, scroll: window });
-	Droppables.add('empty_<%="#{@timeslot.id}.#{@room.id}"%>', { hoverclass: 'hovering', onDrop: dropped });
+	new Draggable('empty_<%="#{@timeslot_id}.#{@room_id}"%>', { revert: true, scroll: window });
+	Droppables.add('empty_<%="#{@timeslot_id}.#{@room_id}"%>', { hoverclass: 'hovering', onDrop: dropped });
  </script>
 <% end %>

@@ -92,6 +92,31 @@ class PresentationsController < ApplicationController
   end
   
   def swap
-    
+    from_type, from_id = params[:from].split "_"
+    to_type, to_id = params[:to].split "_"
+    if from_type == 'presentation' and to_type == 'presentation'
+      @from = Presentation.find from_id
+      @to = Presentation.find to_id
+      @to_id = "#{@to.timeslot_id}.#{@to.room_id}"
+      @from_id = "#{@from.timeslot_id}.#{@from.room_id}"
+      @from.room_id, temp_room_id, @to.room_id = @to.room_id, @from.room_id, nil
+      @from.timeslot_id, temp_timeslot_id, @to.timeslot_id = @to.timeslot_id, @from.timeslot_id, nil
+      @to.save
+      @from.save
+      @to.room_id, @to.timeslot_id = temp_room_id, temp_timeslot_id
+      @to.save
+    elsif from_type == 'presentation'
+      @from = Presentation.find from_id
+      @from_id = "#{@from.timeslot_id}.#{@from.room_id}"
+      @from.timeslot_id, @from.room_id = to_id.split "."
+      @from.save
+      @to_id = to_id
+    elsif to_type == 'presentation'
+      @to = Presentation.find to_id
+      @to_id = "#{@to.timeslot_id}.#{@to.room_id}"
+      @to.timeslot_id, @to.room_id = from_id.split "."
+      @to.save
+      @from_id = from_id
+    end
   end
 end

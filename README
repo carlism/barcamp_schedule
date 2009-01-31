@@ -5,14 +5,13 @@ This software is provided under the MIT License. See doc/LICENSE.
 Features:
 * Browser and iPhone interface for viewing the schedule.
 * Commenting system for in-presentation discussion or notes.
-* Admin interface for quick entry and adjustment of schedule.
+* Admin interface for quick entry and adjustment of schedule. Now with drag and drop.
 * Some twitter integration available.
 
 TO-DO:
 * Extend for a multi-day event
 * Improve security around the admin pages
 * Add an all-comments page
-* Add drag and drop to schedule/admin view for rearranging the presentations
 * Add timeblocks for showing "Planning" and or "Lunch" in the schedule
 
 Twitter integration ideas:
