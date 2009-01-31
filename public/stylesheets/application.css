@@ -13,6 +13,10 @@ table.schedule {
 	background-color: #316853;
 }
 
+.hovering {
+	background-color: #FFC;
+}
+
 table.schedule tr th {
 	font: normal normal bold .9em Arial, sans-serif;
 	color: white;

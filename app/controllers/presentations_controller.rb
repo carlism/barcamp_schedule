@@ -86,8 +86,12 @@ class PresentationsController < ApplicationController
     @presentation.destroy
 
     respond_to do |format|
-      format.html { redirect_to(presentations_url) }
+      format.html { redirect_to(:controller=>:schedule, :action=>:admin) }
       format.xml  { head :ok }
     end
+  end
+  
+  def swap
+    
   end
 end
