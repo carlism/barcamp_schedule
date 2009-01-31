@@ -3,6 +3,10 @@ table.schedule {
 	background-color: #003F83;
 }
 
+.hovering {
+	background-color: #FFC;
+}
+
 table.schedule tr th {
 	font: normal normal bold .9em Arial, sans-serif;
 	color: white;

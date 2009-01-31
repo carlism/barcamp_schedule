@@ -1,3 +1,11 @@
+<script type="text/javascript" charset="utf-8">
+	function dropped(draggable, droppable, event) {
+		alert("dropped: " + draggable.id + " on " + droppable.id);
+		new Ajax.Request('/presentations/swap', {asynchronous:true, evalScripts:true});
+		event.stopPropagation();
+	}
+</script>
+
 <table width="100%" cellspacing="0" class="schedule">
   <tr>
     <th width="10%">Room</th>
@@ -12,28 +20,12 @@
       <td>
         <%=room.name%> (<%=room.location%>)
       </td>
-    <% @timeslots.each_with_index do |timeslot, ts_index| %>
-      <% presentation = @grid[ts_index][rm_index] %>
+    <% @timeslots.each_with_index do | timeslot, ts_index| %>
+      <% @presentation = @grid[ts_index][rm_index] %>
+	  <% @timeslot = timeslot %>	
+	  <% @room = room %>
       <td>
-        <%if !presentation.nil? and presentation.respond_to? :title%>
-          <div id="presentation_<%="#{timeslot.id}_#{room.id}"%>">
-            <%=presentation.title%><br/>
-            <%=presentation.presenter%><br/>
-            <%=presentation.presenter_email%>
-          </div>
-         <script>
-			new Draggable('presentation_<%="#{timeslot.id}_#{room.id}"%>', { revert: true });
-			Droppables.add('presentation_<%="#{timeslot.id}_#{room.id}"%>');
-         </script>
-        <% else %>
-          <div id="empty_<%="#{timeslot.id}_#{room.id}"%>" object="presentation" url="<%=url_for presentation%>.xml">
-            <%= link_to 'empty', :controller=>:presentations, :action=>:new, :params=>{:presentation=>{:room_id=>room.id, :timeslot_id=>timeslot.id}} %>
-          </div>
-         <script>
-			new Draggable('empty_<%="#{timeslot.id}_#{room.id}"%>', { revert: true, scroll: window });
-			Droppables.add('empty_<%="#{timeslot.id}_#{room.id}"%>');
-         </script>
-        <% end %>
+		<%=render :partial=>'presentation'%>
       </td>
     <% end %>
     </tr>
