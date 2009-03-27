@@ -12,7 +12,12 @@ TO-DO:
 * Extend for a multi-day event
 * Improve security around the admin pages
 * Add an all-comments page
+* migrate the whole thing to jquery
 * Add timeblocks for showing "Planning" and or "Lunch" in the schedule
+* Make the app self-service: logins create and admin new events
+** Add subdomain-fu
+** Add Event model to be loaded based on subdomain.
+** Add Event config: icon, url, owner, contact info, color pallet
 
 Twitter integration ideas:
 * Add links to display text. Link @user words to twitter.com/user and #tags to search.twitter.com/search?q=tags
