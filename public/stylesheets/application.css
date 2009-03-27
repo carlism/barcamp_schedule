@@ -1,6 +1,16 @@
+/* @override http://bcni.carlism.org/stylesheets/application.css?1233410435 */
+
+a:link {
+	color: #316853;
+}
+
+a:visited {
+	color: #96ba7a;	
+}
+
 table.schedule {
 	border: 0px;
-	background-color: #003F83;
+	background-color: #316853;
 }
 
 .hovering {
@@ -12,22 +22,22 @@ table.schedule tr th {
 	color: white;
 	background-image: url(../images/table_header.gif);
 	background-repeat: repeat-x;
-	background-color: #003F83;
+	background-color: #316853;
     background-position: bottom;
 	border-right: 1px solid #FFFFFF;
-	border-top: 1px solid #003F83;
+	border-top: 1px solid #316853;
 	vertical-align: top;
 }
 
 table.schedule tr th:last-child {
-	border-right: 1px solid #003F83;
+	border-right: 1px solid #316853;
 }
 
 table.schedule tr td {
 	font: normal normal normal .8em Arial, sans-serif;
 	color: black;
-	border-right: 1px solid #003F83;
-	border-bottom: 1px solid #003F83;
+	border-right: 1px solid #316853;
+	border-bottom: 1px solid #316853;
 	background-color: white;
 }
 
@@ -36,10 +46,10 @@ table.schedule tr td a {
 }
 
 table.schedule tr th:first-child {
-	border-left: 1px solid #003F83;
+	border-left: 1px solid #316853;
 }
 table.schedule tr td:first-child {
-	border-left: 1px solid #003F83;
+	border-left: 1px solid #316853;
 }
 
 ul li a {
@@ -56,7 +66,7 @@ h1 {
 	color: white;
 	background-image: url(../images/table_header.gif);
 	background-repeat: repeat-x;
-	background-color: #003F83;
+	background-color: #316853;
 	background-position: bottom;
 	vertical-align: top;
 }
@@ -72,6 +82,6 @@ label {
 span.field {
 	font: normal normal normal 1.1em Arial, sans-serif;
 	background-color: #CCC;
-	border: 2px ridge #003F83;
+	border: 2px ridge #316853;
 	padding: 2px;
 }

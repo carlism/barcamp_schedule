@@ -25,7 +25,7 @@ protected
   end
 
   def admin?
-    session[:password] == 'bcp'
+    session[:password] == 'bcn1'
   end 
   
   def is_iphone?
@@ -34,7 +34,7 @@ protected
     
   def get_tweet_hash
     chars = ("A".."Z").to_a + ("1".."9").to_a 
-    return "#" + TWEET_PREFIX + Array.new(6, '').collect{chars[rand(chars.size)]}.join
+    return "#" + TWITTER_PREFIX + Array.new(6, '').collect{chars[rand(chars.size)]}.join
   end
   
 end

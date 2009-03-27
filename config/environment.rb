@@ -9,7 +9,7 @@ RAILS_GEM_VERSION = '2.1.1' unless defined? RAILS_GEM_VERSION
 
 TWITTER_USER = 'dktester'
 TWITTER_PASS = 'password'
-TWITTER_PREFIX= 'bcp'
+TWITTER_PREFIX= 'bcnip'
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')

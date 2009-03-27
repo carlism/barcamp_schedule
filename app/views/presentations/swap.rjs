@@ -1,0 +1,8 @@
+@presentation = @from
+@timeslot_id, @room_id = @to_id.split "."
+logger.info "#{@presentation.inspect} #{@timeslot_id}, #{@room_id}"
+page.replace_html "cell_#{@timeslot_id}.#{@room_id}", :partial => "schedule/presentation"
+@presentation = @to
+@timeslot_id, @room_id = @from_id.split "."
+logger.info "#{@presentation.inspect} #{@timeslot_id}, #{@room_id}"
+page.replace_html "cell_#{@timeslot_id}.#{@room_id}", :partial => "schedule/presentation"
