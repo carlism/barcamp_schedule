@@ -1,8 +1,8 @@
 <%if !@presentation.nil? and @presentation.respond_to? :title%>
   <div id="presentation_<%="#{@presentation.id}"%>" class="presentation">
 	<div class="buttons" style="float: right;">
-		<%= image_tag 'replace.png' %><br/>
-		<%= link_to image_tag('delete.png', :border=>0), @presentation, :confirm => 'Are you sure?', :method => :delete  %>
+		<%= image_tag 'replace.png', :alt=>'Drag-n-drop here' %><br/>
+		<%= link_to image_tag('delete.png', :alt=>'Delete', :border=>0), @presentation, :confirm => 'Are you sure?', :method => :delete  %>
 	</div>
     <strong><%=link_to @presentation.title, edit_presentation_path(@presentation)%></strong><br/>
     <%=@presentation.presenter%><br/>
