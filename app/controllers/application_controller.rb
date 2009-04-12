@@ -3,19 +3,15 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
+  protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  # See ActionController::RequestForgeryProtection for details
-  # Uncomment the :secret if you're not using the cookie session store
-  # protect_from_forgery # :secret => 'a22409943d82edcfd79d7631314413ca'
-  
-  # See ActionController::Base for details 
-  # Uncomment this to filter the contents of submitted sensitive data parameters
-  # from your application log (in this case, all fields with names like "password"). 
+  # Scrub sensitive parameters from your log
   filter_parameter_logging :password
   
-   helper_method :admin?
-  
-protected
+  helper_method :admin?
+
+  protected
+
   def authorize
     unless admin?
       flash[:error] = "unauthorized access"
@@ -27,11 +23,11 @@ protected
   def admin?
     session[:password] == 'bcn1'
   end 
-  
+
   def is_iphone?
       request.user_agent =~ /(Mobile\/.+Safari)/
   end
-    
+
   def get_tweet_hash
     chars = ("A".."Z").to_a + ("1".."9").to_a 
     return "#" + TWITTER_PREFIX + Array.new(6, '').collect{chars[rand(chars.size)]}.join
