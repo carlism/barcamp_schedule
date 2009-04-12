@@ -51,8 +51,8 @@ class PresentationsController < ApplicationController
       if @presentation.save
         flash[:notice] = 'Presentation was successfully created.'
         # post a twitter note with random hash and presentation name
-        twit = Twitter::Base.new(TWITTER_USER, TWITTER_PASS)
-        twit.post("To post notes to \"" + @presentation.title[0..80] + "\" post using " + @presentation.tweet_hash)
+        # twit = Twitter::Base.new(TWITTER_USER, TWITTER_PASS)
+        # twit.post("To post notes to \"" + @presentation.title[0..80] + "\" post using " + @presentation.tweet_hash)
         format.html { redirect_to(:controller=>'schedule', :action=>'admin') }
         format.xml  { render :xml => @presentation, :status => :created, :location => @presentation }
       else

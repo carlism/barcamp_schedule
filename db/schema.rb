@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081106205331) do
+ActiveRecord::Schema.define(:version => 20081113221333) do
 
   create_table "comments", :force => true do |t|
     t.integer  "presentation_id"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20081106205331) do
     t.integer  "timeslot_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tweet_hash"
+    t.string   "tweet_max_id"
   end
 
   add_index "presentations", ["room_id", "timeslot_id"], :name => "index_presentations_on_room_id_and_timeslot_id", :unique => true
@@ -47,8 +49,8 @@ ActiveRecord::Schema.define(:version => 20081106205331) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "timeslots", :force => true do |t|
     t.string   "day"
