@@ -1,7 +1,6 @@
 <html>
   <head>
     <title><%= yield :title %></title>
-    <%= javascript_include_tag :defaults, :cache => "cache/all" %>
     <script type="text/javascript">
         rails_authenticity_token = '<%= form_authenticity_token %>'
     </script>

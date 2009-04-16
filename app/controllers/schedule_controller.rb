@@ -24,9 +24,11 @@ class ScheduleController < ApplicationController
 
   def mobile
     index
+    render :layout=>"mobile"
   end
 
   def mobile_presentation
     @presentation = current_event.presentations.find(params[:id], :include=>[:comments])
+    render :layout=>"mobile"
   end
 end

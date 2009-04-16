@@ -1,6 +1,6 @@
 <script type="text/javascript" charset="utf-8">
 	function dropped(draggable, droppable, event) {
-		new Ajax.Request('/presentations/swap?from='+draggable.id+'&to='+droppable.id, {asynchronous:true, evalScripts:true});
+		new Ajax.Request('/presentations/swap?from='+draggable.id+'&to='+droppable.id+'&authenticity_token='+rails_authenticity_token, {asynchronous:true, evalScripts:true});
 		event.stopPropagation();
 	}
 </script>
