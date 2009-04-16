@@ -22,9 +22,7 @@
         function findDiv(hour,minute){
           divid = calcDivId(hour,minute);
           if (document.getElementById(divid)){
-            //scrollToTime(divid);
             iui.currPos= document.getElementById(divid).offsetTop; 
-            alert('currPos:' + currPos);      
           }else{
             if (minute==0){
               hour--;
@@ -42,7 +40,6 @@
         function scrollToTime(divid){
           var slotdiv = document.getElementById(divid);          
           window.scrollTo(0,slotdiv.offsetTop); 
-          alert('scrolled:' + divid);         
         }
     </script>
 	<%= yield :header %>

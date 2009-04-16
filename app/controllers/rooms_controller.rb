@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.xml
   def index
-    @rooms = Room.find(:all)
+    @rooms = current_event.rooms.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.xml
   def show
-    @room = Room.find(params[:id])
+    @room = current_event.rooms.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +27,7 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   # GET /rooms/new.xml
   def new
-    @room = Room.new
+    @room = current_event.rooms.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,13 +37,13 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1/edit
   def edit
-    @room = Room.find(params[:id])
+    @room = current_event.rooms.find(params[:id])
   end
 
   # POST /rooms
   # POST /rooms.xml
   def create
-    @room = Room.new(params[:room])
+    @room = current_event.rooms.build(params[:room])
 
     respond_to do |format|
       if @room.save
@@ -60,7 +60,7 @@ class RoomsController < ApplicationController
   # PUT /rooms/1
   # PUT /rooms/1.xml
   def update
-    @room = Room.find(params[:id])
+    @room = current_event.rooms.find(params[:id])
 
     respond_to do |format|
       if @room.update_attributes(params[:room])
@@ -77,7 +77,7 @@ class RoomsController < ApplicationController
   # DELETE /rooms/1
   # DELETE /rooms/1.xml
   def destroy
-    @room = Room.find(params[:id])
+    @room = current_event.rooms.find(params[:id])
     @room.destroy
 
     respond_to do |format|

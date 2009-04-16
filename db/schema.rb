@@ -9,13 +9,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081113221333) do
+ActiveRecord::Schema.define(:version => 20090416010630) do
 
   create_table "comments", :force => true do |t|
     t.integer  "presentation_id"
     t.string   "name"
     t.text     "body"
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.string   "short_name"
+    t.string   "image_url"
+    t.string   "link_url"
+    t.string   "primary_color"
+    t.string   "secondary_color"
+    t.string   "tertiary_color"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20081113221333) do
     t.datetime "updated_at"
     t.string   "tweet_hash"
     t.string   "tweet_max_id"
+    t.integer  "event_id"
   end
 
   add_index "presentations", ["room_id", "timeslot_id"], :name => "index_presentations_on_room_id_and_timeslot_id", :unique => true
@@ -40,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20081113221333) do
     t.integer  "capacity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
   end
 
   create_table "sessions", :force => true do |t|
@@ -53,10 +67,11 @@ ActiveRecord::Schema.define(:version => 20081113221333) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "timeslots", :force => true do |t|
-    t.string   "day"
     t.time     "start_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
+    t.date     "slot_date"
   end
 
 end

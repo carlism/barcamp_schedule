@@ -5,7 +5,7 @@ class TimeslotsController < ApplicationController
   # GET /timeslots
   # GET /timeslots.xml
   def index
-    @timeslots = Timeslot.find(:all, :order=>'time(start_time)')
+    @timeslots = current_event.timeslots.find(:all, :order=>'slot_date, time(start_time)')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class TimeslotsController < ApplicationController
   # GET /timeslots/1
   # GET /timeslots/1.xml
   def show
-    @timeslot = Timeslot.find(params[:id])
+    @timeslot = current_event.timeslots.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +27,7 @@ class TimeslotsController < ApplicationController
   # GET /timeslots/new
   # GET /timeslots/new.xml
   def new
-    @timeslot = Timeslot.new
+    @timeslot = current_event.timeslots.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,13 +37,13 @@ class TimeslotsController < ApplicationController
 
   # GET /timeslots/1/edit
   def edit
-    @timeslot = Timeslot.find(params[:id])
+    @timeslot = current_event.timeslots.find(params[:id])
   end
 
   # POST /timeslots
   # POST /timeslots.xml
   def create
-    @timeslot = Timeslot.new(params[:timeslot])
+    @timeslot = current_event.timeslots.new(params[:timeslot])
     
     respond_to do |format|
       if @timeslot.save
@@ -60,9 +60,10 @@ class TimeslotsController < ApplicationController
   # PUT /timeslots/1
   # PUT /timeslots/1.xml
   def update
-    @timeslot = Timeslot.find(params[:id])
+    @timeslot = current_event.timeslots.find(params[:id])
     respond_to do |format|
       @timeslot.start_time_will_change!
+      @timeslot.slot_date_will_change!
       if @timeslot.update_attributes(params[:timeslot])
         flash[:notice] = "Timeslot was successfully updated."
         format.html { redirect_to(timeslots_url) }
@@ -77,7 +78,7 @@ class TimeslotsController < ApplicationController
   # DELETE /timeslots/1
   # DELETE /timeslots/1.xml
   def destroy
-    @timeslot = Timeslot.find(params[:id])
+    @timeslot = current_event.timeslots.find(params[:id])
     @timeslot.destroy
 
     respond_to do |format|

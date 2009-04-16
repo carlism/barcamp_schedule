@@ -5,7 +5,7 @@ class PresentationsController < ApplicationController
   # GET /presentations
   # GET /presentations.xml
   def index
-    @presentations = Presentation.find(:all)
+    @presentations = current_event.presentations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class PresentationsController < ApplicationController
   # GET /presentations/1
   # GET /presentations/1.xml
   def show
-    @presentation = Presentation.find(params[:id])    
+    @presentation = current_event.presentations.find(params[:id])    
     @comment = Comment.new
         
     respond_to do |format|
@@ -28,8 +28,8 @@ class PresentationsController < ApplicationController
   # GET /presentations/new
   # GET /presentations/new.xml
   def new
-    @presentation = Presentation.new(params[:presentation])
-
+    @presentation = current_event.presentations.build(params[:presentation])
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @presentation }
@@ -38,13 +38,13 @@ class PresentationsController < ApplicationController
 
   # GET /presentations/1/edit
   def edit
-    @presentation = Presentation.find(params[:id])
+    @presentation = current_event.presentations.find(params[:id])
   end
 
   # POST /presentations
   # POST /presentations.xml
   def create
-    @presentation = Presentation.new(params[:presentation])
+    @presentation = current_event.presentations.build(params[:presentation])
     @presentation.tweet_hash = get_tweet_hash
 
     respond_to do |format|
@@ -65,7 +65,7 @@ class PresentationsController < ApplicationController
   # PUT /presentations/1
   # PUT /presentations/1.xml
   def update
-    @presentation = Presentation.find(params[:id])
+    @presentation = current_event.presentations.find(params[:id])
 
     respond_to do |format|
       if @presentation.update_attributes(params[:presentation])
@@ -82,7 +82,7 @@ class PresentationsController < ApplicationController
   # DELETE /presentations/1
   # DELETE /presentations/1.xml
   def destroy
-    @presentation = Presentation.find(params[:id])
+    @presentation = current_event.presentations.find(params[:id])
     @presentation.destroy
 
     respond_to do |format|
@@ -95,8 +95,8 @@ class PresentationsController < ApplicationController
     from_type, from_id = params[:from].split "_"
     to_type, to_id = params[:to].split "_"
     if from_type == 'presentation' and to_type == 'presentation'
-      @from = Presentation.find from_id
-      @to = Presentation.find to_id
+      @from = current_event.presentations.find from_id
+      @to = current_event.presentations.find to_id
       @to_id = "#{@to.timeslot_id}.#{@to.room_id}"
       @from_id = "#{@from.timeslot_id}.#{@from.room_id}"
       @from.room_id, temp_room_id, @to.room_id = @to.room_id, @from.room_id, nil
@@ -106,13 +106,13 @@ class PresentationsController < ApplicationController
       @to.room_id, @to.timeslot_id = temp_room_id, temp_timeslot_id
       @to.save
     elsif from_type == 'presentation'
-      @from = Presentation.find from_id
+      @from = current_event.presentations.find from_id
       @from_id = "#{@from.timeslot_id}.#{@from.room_id}"
       @from.timeslot_id, @from.room_id = to_id.split "."
       @from.save
       @to_id = to_id
     elsif to_type == 'presentation'
-      @to = Presentation.find to_id
+      @to = current_event.presentations.find to_id
       @to_id = "#{@to.timeslot_id}.#{@to.room_id}"
       @to.timeslot_id, @to.room_id = from_id.split "."
       @to.save

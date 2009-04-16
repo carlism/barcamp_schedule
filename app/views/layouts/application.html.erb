@@ -8,16 +8,21 @@
     </script>
 	<%= stylesheet_link_tag "application.css", :media => "screen" %>
 	<%= yield :header %>
+	<style>
+		body {
+			background-color: <%=current_event.primary_color%>;
+		}
+	</style>
 </head>
   <body>
     <div style="float:left;">
-    <a href="http://barcamp.org/NewsInnovation-Philly"><img height="150px" width="500px" src="http://barcamp.org/f/barcampphiladelpia_logo_update.jpg" alt="BarCamp NewsInnovation - Philly" border="0" /></a></div>
+    <a href="<%=current_event.link_url%>"><img width="350px" src="<%=current_event.image_url%>" alt="<%=current_event.name%>" border="0" /></a></div>
     <ul>
         <li><a href="/iphone">iPhone edition</a></li>
         <li><a href="/mobile">Mobile edition</a> (no table)</li>
     </ul>
     <br clear="all"/>
-	<p style="color: green"><%= flash[:notice] %></p>
+	<p style="color: <%=current_event.secondary_color%>"><%= flash[:notice] %></p>
     <%= yield %>
   </body>
 </html>

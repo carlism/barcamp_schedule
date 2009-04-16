@@ -3,12 +3,15 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
-  # Scrub sensitive parameters from your log
+  protect_from_forgery # See ActionController::RequestForgeryProtection for details\
   filter_parameter_logging :password
+  before_filter :set_current_event
+  helper_method :current_event, :admin?
+
+   def current_event
+     set_current_event
+   end
   
-  helper_method :admin?
 
   protected
 
@@ -21,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    session[:password] == 'bcn1'
+    session[:password] == 'hcb0s'
   end 
 
   def is_iphone?
@@ -31,6 +34,12 @@ class ApplicationController < ActionController::Base
   def get_tweet_hash
     chars = ("A".."Z").to_a + ("1".."9").to_a 
     return "#" + TWITTER_PREFIX + Array.new(6, '').collect{chars[rand(chars.size)]}.join
+  end
+  
+  private
+  
+  def set_current_event
+    @current_event ||= Event.find_by_short_name!(request.subdomains.last)
   end
   
 end

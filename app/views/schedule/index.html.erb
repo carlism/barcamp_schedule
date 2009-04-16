@@ -3,16 +3,13 @@
 <% #end %>
 <table class="schedule" cellspacing="0" width="100%">
   <tr>
-
     <th width="10%">Room</th>
     <% @timeslots.each do |timeslot| %>
       <th width="<%=90/@timeslots.size%>%">
         <%=timeslot.start_time.strftime("%I:%M %p")%>
       </th>
     <% end %>
-
   </tr>
-
 
   <% @rooms.each_with_index do |room, rm_index| %>
     <tr>

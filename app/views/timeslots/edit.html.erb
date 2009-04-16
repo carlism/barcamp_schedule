@@ -1,8 +1,8 @@
 <% form_for(@timeslot) do |f| %>
   <%= f.error_messages %>
-    <%= f.hidden_field :day, :value=>'Saturday' %>
   <p>
     <%= f.label :start_time %><br />
+    <%= f.date_select :slot_date, :start_year=>Time.now.year-1, :end_year=>Time.now.year+10 %>
     <%= f.time_select :start_time, :minute_step=>15, :twelve_hour => true %>
   </p>
   <p>
