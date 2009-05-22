@@ -5,7 +5,7 @@ class TimeslotsController < ApplicationController
   # GET /timeslots
   # GET /timeslots.xml
   def index
-    @timeslots = current_event.timeslots.find(:all, :order=>'slot_date, time(start_time)')
+    @timeslots = current_event.timeslots.find(:all, :order=>'slot_date, start_time')
 
     respond_to do |format|
       format.html # index.html.erb
