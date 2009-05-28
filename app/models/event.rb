@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   has_many :presentations
   
   def schedule(selected_day)
-    slots = timeslots.find_all_by_slot_date(selected_day, :order=>'time(start_time)')
+    slots = timeslots.find_all_by_slot_date(selected_day, :order=>'cast(start_time as time)')
     @grid = []
     slots.each do
       row = []
