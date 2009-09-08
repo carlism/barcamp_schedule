@@ -1,0 +1,13 @@
+<% @rooms.each_with_index do |room, rm_index| %>
+  <tr>
+    <td>
+      <%=room.name%> (<%=room.location%>)
+    </td>
+  <% @timeslots.each_with_index do | timeslot, ts_index| %>
+    <% @presentation = @grid[ts_index][rm_index] %>
+	<% @timeslot_id = timeslot.id %>	
+	<% @room_id = room.id %>
+	<% yield %>
+  <% end %>
+  </tr>
+<% end %>
