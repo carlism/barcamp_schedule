@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    session[:password] == 'hcb0s'
+    session[:password] == 'fc-nyc'
   end 
 
   def is_iphone?
