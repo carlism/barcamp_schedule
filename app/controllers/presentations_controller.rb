@@ -1,5 +1,6 @@
 class PresentationsController < ApplicationController
   before_filter :authorize, :except=>:show
+  protect_from_forgery :except => [:swap]
   layout 'admin'
 
   # GET /presentations

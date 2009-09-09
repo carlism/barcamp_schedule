@@ -1,40 +1,15 @@
 <script type="text/javascript" charset="utf-8">
 	function dropped(draggable, droppable, event) {
-		new Ajax.Request('/presentations/swap?from='+draggable.id+'&to='+droppable.id+'&authenticity_token='+rails_authenticity_token, {asynchronous:true, evalScripts:true});
+		new Ajax.Request('/presentations/swap?from='+draggable.id+'&to='+droppable.id, {asynchronous:true, evalScripts:true});
 		event.stopPropagation();
 	}
 </script>
 
 <table width="100%" cellspacing="0" class="schedule">
-  <%=render :partial=>'column_heading'%>
-  <% render :layout =>'rows' do %>
+  <%=render :partial=>current_event.rotation_columns%>
+  <% render :layout=>current_event.rotation_rows do %>
 	  <td><div id="cell_<%=@timeslot_id%>.<%=@room_id%>">
-		<%if !@presentation.nil? and @presentation.respond_to? :title%>
-		  <div id="presentation_<%="#{@presentation.id}"%>" class="presentation">
-			<div class="buttons" style="float: right;">
-				<%= image_tag 'replace.png', :alt=>'Drag-n-drop here' %><br/>
-				<%= link_to image_tag('delete.png', :alt=>'Delete', :border=>0), @presentation, :confirm => 'Are you sure?', :method => :delete  %>
-			</div>
-		    <strong><%=link_to @presentation.title, edit_presentation_path(@presentation)%></strong><br/>
-		    <%=@presentation.presenter%><br/>
-		    <%=@presentation.presenter_email%>
-		  </div>
-		 <script>
-			new Draggable('presentation_<%="#{@presentation.id}"%>', { revert: true });
-			Droppables.add('presentation_<%="#{@presentation.id}"%>', { hoverclass: 'hovering', onDrop: dropped });
-		 </script>
-		<% else %>
-		  <div id="empty_<%="#{@timeslot_id}.#{@room_id}"%>" class="presentation">
-			<div class="buttons" style="float: right;">
-				<%= image_tag 'replace.png' %><br/>
-			</div>
-		    <%= link_to 'empty', :controller=>:presentations, :action=>:new, :params=>{:presentation=>{:room_id=>@room_id, :timeslot_id=>@timeslot_id}} %>
-		  </div>
-		 <script>
-			new Draggable('empty_<%="#{@timeslot_id}.#{@room_id}"%>', { revert: true, scroll: window });
-			Droppables.add('empty_<%="#{@timeslot_id}.#{@room_id}"%>', { hoverclass: 'hovering', onDrop: dropped });
-		 </script>
-		<% end %>
+		<%=render :layout=>nil, :partial=>'presentation'%>
 	  </div></td>
   <% end %>
 </table>

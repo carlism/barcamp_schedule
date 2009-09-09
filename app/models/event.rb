@@ -26,4 +26,20 @@ class Event < ActiveRecord::Base
   def days
     timeslots.find(:all, :select=>'distinct slot_date').map{|ts| ts.slot_date }
   end
+
+  def rotation_columns
+    if rotation=='TIME_ACROSS'
+      'time_column_heading'
+    else
+      'room_column_heading'
+    end
+  end
+  
+  def rotation_rows
+    if rotation=='TIME_ACROSS'
+      'time_rows'
+    else
+      'room_rows'
+    end
+  end
 end

@@ -1,22 +1,13 @@
 <table class="schedule" cellspacing="0" width="100%">
-  <%=render :partial=>'column_heading'%>
-  <% @rooms.each_with_index do |room, rm_index| %>
-    <tr>
+  <%=render :partial=>current_event.rotation_columns%>
+  <% render :layout =>current_event.rotation_rows do %>
       <td>
-        <%=room.name%> (<%=room.location%>)
-      </td>
-    <% @timeslots.each_with_index do |timeslot, ts_index| %>
-      <% presentation = @grid[ts_index][rm_index] %>
-      <td>
-        <%if !presentation.nil? and presentation.respond_to? :title%>
-          <strong><%=link_to presentation.title, presentation_path(presentation)%></strong><br/>
-          <%=presentation.presenter%>
+        <%if !@presentation.nil? and @presentation.respond_to? :title%>
+          <strong><%=link_to @presentation.title, presentation_path(@presentation)%></strong><br/>
+          <%=@presentation.presenter%>
 		<% else %>
 			&nbsp;
         <% end %>
       </td>
-    <% end %>
-    </tr>
   <% end %>
-
 </table>

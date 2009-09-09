@@ -1,0 +1,13 @@
+<% @timeslots.each_with_index do | timeslot, ts_index| %>
+  <tr>
+    <td>
+      <%=timeslot.start_time.strftime("%I:%M %p")%>
+    </td>
+  <% @rooms.each_with_index do |room, rm_index| %>
+    <% @presentation = @grid[ts_index][rm_index] %>
+	<% @timeslot_id = timeslot.id %>	
+	<% @room_id = room.id %>
+	<%=yield %>
+  <% end %>
+  </tr>
+<% end %>

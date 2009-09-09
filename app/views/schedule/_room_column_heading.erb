@@ -1,0 +1,8 @@
+<tr>
+  <th width="10%">Timeslot</th>
+  <% @rooms.each do |room| %>
+    <th width="<%=90/@rooms.size%>%">
+      <%=room.name%> (<%=room.location%>)
+    </th>
+  <% end %>
+</tr>
