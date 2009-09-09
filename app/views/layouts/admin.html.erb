@@ -10,6 +10,16 @@
 	<%= yield :header %>
 </head>
   <body>
+    <div style="float:right;">
+		<% form_tag do |f| %>
+			<%=select_tag 'selected_day', 
+				options_for_select(
+					current_event.days.collect{|day| [day.strftime('%a %b %d %Y'), day.to_s]}, 
+					:selected => session[:selected_day]), 
+				{:onchange => 'this.form.submit();' }
+			%>
+		<% end %>
+	</div>
     <a href="/schedule/admin">schedule</a> ||
     <a href="/timeslots">timeslots</a> |
     <a href="/rooms">rooms</a> |

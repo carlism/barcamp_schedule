@@ -3,8 +3,9 @@ class ScheduleController < ApplicationController
   
   def index
     @days = current_event.days
-    @selected_day = params['selected_day'] || @days[0]
-    @rooms, @timeslots, @grid = current_event.schedule(@selected_day)
+    session[:selected_day] = params['selected_day'] || session[:selected_day] || @days[0]
+    selected_day = session[:selected_day]
+    @rooms, @timeslots, @grid = current_event.schedule(selected_day)
   end
 
   def admin

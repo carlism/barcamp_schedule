@@ -16,7 +16,20 @@
 </head>
   <body>
     <div style="float:left;">
-    <a href="<%=current_event.link_url%>"><img width="350px" src="<%=current_event.image_url%>" alt="<%=current_event.name%>" border="0" /></a></div>
+    	<a href="<%=current_event.link_url%>">
+			<img width="350px" src="<%=current_event.image_url%>" alt="<%=current_event.name%>" border="0"/>
+		</a>
+	</div>
+    <div style="float:right;">
+		<% form_tag do |f| %>
+			<%=select_tag 'selected_day', 
+				options_for_select(
+					current_event.days.collect{|day| [day.strftime('%a %b %d %Y'), day.to_s]}, 
+					:selected => session[:selected_day]), 
+				{:onchange => 'this.form.submit();' }
+			%>
+		<% end %>
+	</div>
 	<h3 style="padding-top: 20px; margin-bottom:0px; padding-bottom:0px;">Schedule Grid</h3>
     <ul>
         <a href="/iphone"><li>iPhone edition</li></a>
