@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
     if selected_day
       slots = timeslots.find_all_by_slot_date(selected_day, :order=>'start_time')
     else
-      slots = timeslots.find(:all, :order=>'start_time')
+      slots = timeslots.find(:all, :order=>'slot_date, start_time')
     end
     @grid = []
     slots.each do
