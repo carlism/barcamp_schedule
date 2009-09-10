@@ -1,11 +1,13 @@
 class ScheduleController < ApplicationController
   before_filter :is_iphone?, :authorize, :only => :admin
+  before_filter :setup_selected_day
+
+  def setup_selected_day
+    session[:selected_day] = params['selected_day'] || session[:selected_day] || current_event.days[0]        
+  end
   
   def index
-    @days = current_event.days
-    session[:selected_day] = params['selected_day'] || session[:selected_day] || @days[0]
-    selected_day = session[:selected_day]
-    @rooms, @timeslots, @grid = current_event.schedule(selected_day)
+    @rooms, @timeslots, @grid = current_event.schedule(session[:selected_day])
   end
 
   def admin
@@ -14,7 +16,7 @@ class ScheduleController < ApplicationController
   end
 
   def iphone
-    index
+    @rooms, @timeslots, @grid = current_event.schedule
     render :layout=>"iphone"
   end
 
@@ -24,7 +26,7 @@ class ScheduleController < ApplicationController
   end
 
   def mobile
-    index
+    @rooms, @timeslots, @grid = current_event.schedule
     render :layout=>"mobile"
   end
 

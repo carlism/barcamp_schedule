@@ -16,12 +16,12 @@
 
 <ul id="all_rooms" title="<%=current_event.name%>" selected="true">
   <% @timeslots.each_with_index do |timeslot, ts_index| %>
-  <li class="group" id="<%=timeslot.start_time.strftime("%H-%M")%>"><a href="#ts_<%=ts_index%>"><%=timeslot.start_time.strftime("%I:%M %p")%></a></li>
+  <li class="group" id="<%=timeslot.start_time.strftime("%H-%M-%b-%d-%Y")%>"><a href="#ts_<%=ts_index%>"><%=timeslot.start_time.strftime("%I:%M %p %a %b %d %Y")%></a></li>
   <% end %>
 </ul>
 
 <% @timeslots.each_with_index do |timeslot, ts_index| %>
-<ul id="ts_<%=ts_index%>" title="<%=timeslot.start_time.strftime("%I:%M %p")%>">
+<ul id="ts_<%=ts_index%>" title="<%=timeslot.start_time.strftime("%I:%M %p %a %b %d %Y")%>">
 	<% @rooms.each_with_index do |room, rm_index| %>
 	    <% presentation = @grid[ts_index][rm_index] %>
 	      <%if !presentation.nil? and presentation.respond_to? :title%>

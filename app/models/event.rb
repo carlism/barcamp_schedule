@@ -3,8 +3,13 @@ class Event < ActiveRecord::Base
   has_many :rooms
   has_many :presentations
   
-  def schedule(selected_day)
-    slots = timeslots.find_all_by_slot_date(selected_day, :order=>'start_time')
+  def schedule(selected_day = nil)
+    slots = []
+    if selected_day
+      slots = timeslots.find_all_by_slot_date(selected_day, :order=>'start_time')
+    else
+      slots = timeslots.find(:all, :order=>'start_time')
+    end
     @grid = []
     slots.each do
       row = []
