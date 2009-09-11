@@ -14,15 +14,11 @@
     <td><%=h presentation.title %></td>
     <td><%=h presentation.presenter %></td>
     <td><%=h presentation.presenter_email %></td>
-    <td><%=h presentation.room.name %></td>
-    <td><%=h presentation.timeslot.start_time.strftime("%I:%M %p") %></td>
+    <td><%=h presentation.room.name if presentation.room %></td>
+    <td><%=h presentation.timeslot.start_time.strftime("%I:%M %p") if presentation.timeslot %></td>
     <td><%= link_to 'Show', presentation %></td>
     <td><%= link_to 'Edit', edit_presentation_path(presentation) %></td>
     <td><%= link_to 'Destroy', presentation, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New presentation', new_presentation_path %>

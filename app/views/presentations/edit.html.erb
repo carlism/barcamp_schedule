@@ -16,12 +16,12 @@
     <%= f.text_field :presenter_email %>
   </p>
   <p>
-    <%= f.label :room_id %><br />
-    <%= f.text_field :room_id %>
+    Room<br />
+    <%= @presentation.room.name %>
   </p>
   <p>
-    <%= f.label :timeslot_id %><br />
-    <%= f.text_field :timeslot_id %>
+    Timeslot<br />
+    <%= @presentation.timeslot %>
   </p>
   <p>
     <%= f.submit "Update" %>
