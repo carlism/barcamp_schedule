@@ -70,9 +70,8 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 
 
-  require 'authlogic'
-  require 'httparty'
-  require 'twitter'
-
-
 end
+
+require 'twitter'
+require 'httparty'
+require 'authlogic'
