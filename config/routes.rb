@@ -10,8 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.iphone 'iphone', :controller=>'schedule', :action=>'iphone'
   map.mobile 'mobile', :controller=>'schedule', :action=>'mobile'
-  map.root :controller => 'home', :conditions => { :subdomain => 'www' }
   map.root :controller => 'schedule', :conditions => { :subdomain => /.+/ }
+  map.root :controller => 'home', :conditions => { :subdomain => 'www' }
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
