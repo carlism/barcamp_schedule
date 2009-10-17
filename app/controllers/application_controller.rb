@@ -6,13 +6,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details\
   filter_parameter_logging :password
   before_filter :set_current_event
-  helper_method :current_event, :admin?
+  helper_method :current_event, :admin?, :current_user
 
    def current_event
      set_current_event
    end
   
-
   protected
 
   def authorize
@@ -41,5 +40,15 @@ class ApplicationController < ActionController::Base
   def set_current_event
     @current_event ||= Event.find_by_short_name!(request.subdomains.last)
   end
-  
+
+  def current_user_session
+      return @current_user_session if defined?(@current_user_session)
+      @current_user_session = UserSession.find
+  end
+
+  def current_user
+      return @current_user if defined?(@current_user)
+      @current_user = current_user_session && current_user_session.record
+  end
+
 end

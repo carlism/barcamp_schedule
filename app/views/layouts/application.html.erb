@@ -16,11 +16,12 @@
 </head>
   <body>
     <div style="float:left;">
-    	<a href="<%=current_event.link_url%>">
-			<img width="350px" src="<%=current_event.image_url%>" alt="<%=current_event.name%>" border="0"/>
+    	<a href="<%=current_event.link_url||'#'%>">
+          <%=image_tag(current_event.image_url, :width=>"350", :alt=>current_event.name, :border=>0)%>
 		</a>
 	</div>
-    <div style="float:right;">
+    <div id="nav_box">
+        <div id="date_select_form">
 		<% form_tag do |f| %>
 			<%=select_tag 'selected_day', 
 				options_for_select(
@@ -29,14 +30,24 @@
 				{:onchange => 'this.form.submit();' }
 			%>
 		<% end %>
+        </div>
+        <div id="user_links">
+            <% if current_user %>
+                <%=link_to "profile", edit_user_path(:current) %> |
+                <%=link_to "logout", logout_path %>
+            <% else %>
+                <%=link_to "register", new_user_path %> |
+                <%=link_to "login", login_path %>
+            <% end %>
+        </div>
 	</div>
 	<h3 style="padding-top: 20px; margin-bottom:0px; padding-bottom:0px;">Schedule Grid</h3>
     <ul>
         <a href="/iphone"><li>iPhone edition</li></a>
         <a href="/mobile"><li>Mobile edition (no table)</li></a>
     </ul>
-    <br clear="all"/>
-	<p style="color: <%=current_event.secondary_color%>"><%= flash[:notice] %></p>
+    <br clear="all"/>    
+	<p><%= flash[:notice] %></p>
     <%= yield %>
   </body>
 </html>

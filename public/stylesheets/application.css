@@ -89,3 +89,7 @@ span.field {
 	border: 2px ridge #316853;
 	padding: 2px;
 }
+
+div#nav_box {
+    float:right;
+}

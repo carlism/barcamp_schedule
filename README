@@ -6,10 +6,10 @@ Features:
 * Browser and iPhone interface for viewing the schedule.
 * Commenting system for in-presentation discussion or notes.
 * Admin interface for quick entry and adjustment of schedule. Now with drag and drop.
+* Supports multi-day events
 * Some twitter integration available.
 
 TO-DO:
-* Extend for a multi-day event
 * Improve security around the admin pages
 * Add an all-comments page
 * migrate the whole thing to jquery
@@ -18,6 +18,7 @@ TO-DO:
 ** Add subdomain-fu
 ** Add Event model to be loaded based on subdomain.
 ** Add Event config: icon, url, owner, contact info, color pallet
+* Add an event idea and voting system that can roll idea into the schedule the day of the event
 
 Twitter integration ideas:
 * Add links to display text. Link @user words to twitter.com/user and #tags to search.twitter.com/search?q=tags
