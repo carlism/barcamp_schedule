@@ -1,3 +1,3 @@
-httparty
+httparty --version 0.4.3
 twitter
 authlogic
