@@ -2,7 +2,10 @@ class Event < ActiveRecord::Base
   has_many :timeslots
   has_many :rooms
   has_many :presentations
-  
+  has_many :roles  
+  has_many :users, :through => :roles
+  has_many :admins, :through => :roles, :source => :user, :conditions => "role_type = '#{Role::TYPE_ADMIN}'" 
+
   def schedule(selected_day = nil)
     slots = []
     if selected_day

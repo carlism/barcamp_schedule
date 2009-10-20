@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details\
   filter_parameter_logging :password
   before_filter :set_current_event
-  helper_method :current_event, :admin?, :current_user
+  helper_method :current_event, :current_user, :is_admin?
 
    def current_event
      set_current_event
@@ -14,17 +14,15 @@ class ApplicationController < ActionController::Base
   
   protected
 
-  def authorize
-    unless admin?
-      flash[:error] = "unauthorized access"
-      redirect_to '/login'
-      false
+  def is_admin?
+    if current_user && current_event
+        current_event.admins.find current_user
+    else
+        flash[:error] = "unauthorized access"
+        redirect_to login_path
+        false
     end
   end
-
-  def admin?
-    session[:password] == 'hcb0s'
-  end 
 
   def is_iphone?
       request.user_agent =~ /(Mobile\/.+Safari)/
@@ -38,7 +36,7 @@ class ApplicationController < ActionController::Base
   private
   
   def set_current_event
-    @current_event ||= Event.find_by_short_name!(request.subdomains.last)
+    @current_event ||= Event.find_by_short_name(request.subdomains.last)
   end
 
   def current_user_session

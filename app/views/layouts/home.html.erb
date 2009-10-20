@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title><%= yield :title %></title>
+    <%= javascript_include_tag :defaults, :cache => "cache/all" %>
+    <script type="text/javascript">
+        rails_authenticity_token = '<%= form_authenticity_token %>'
+    </script>
+	<%= stylesheet_link_tag "application.css", :media => "screen" %>
+	<%= yield :header %>
+</head>
+  <body>
+    <div id="nav_box">
+        <div id="user_links">
+            <% if current_user %>
+                <%=link_to "profile", edit_user_path(:current) %> |
+                <%=link_to "logout", logout_path %>
+            <% else %>
+                <%=link_to "register", new_user_path %> |
+                <%=link_to "login", login_path %>
+            <% end %>
+        </div>
+	</div>
+	<h3 style="padding-top: 20px; margin-bottom:0px; padding-bottom:0px;">*Camp</h3>
+    <br clear="all"/>
+	<p><%= flash[:notice] %></p>
+    <%= yield %>
+  </body>
+</html>

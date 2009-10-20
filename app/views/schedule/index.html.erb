@@ -1,3 +1,7 @@
+<% content_for :title do %>
+    <%= current_event.name %>                
+<% end %>
+
 <table class="schedule" cellspacing="0" width="100%">
   <%=render :partial=>current_event.rotation_columns%>
   <% render :layout =>current_event.rotation_rows do %>

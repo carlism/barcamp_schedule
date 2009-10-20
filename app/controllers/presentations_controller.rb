@@ -21,7 +21,7 @@ class PresentationsController < ApplicationController
     @comment = Comment.new
         
     respond_to do |format|
-      format.html { render :layout=>"application" }# show.html.erb
+      format.html { render :layout=>"schedule" }# show.html.erb
       format.xml  { render :xml => @presentation }
     end
   end

@@ -1,5 +1,6 @@
 class ScheduleController < ApplicationController
-  before_filter :is_iphone?, :authorize, :only => :admin
+  before_filter :is_iphone?
+  before_filter :is_admin?, :only => :admin
   before_filter :setup_selected_day
 
   def setup_selected_day
