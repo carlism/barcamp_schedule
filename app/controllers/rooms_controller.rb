@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_filter :authorize
+  before_filter :is_admin?
   layout 'admin', :except=>:new
   
   # GET /rooms

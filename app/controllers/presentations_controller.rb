@@ -1,5 +1,5 @@
 class PresentationsController < ApplicationController
-  before_filter :authorize, :except=>:show
+  before_filter :is_admin?, :except=>:show
   protect_from_forgery :except => [:swap]
   layout 'admin'
 

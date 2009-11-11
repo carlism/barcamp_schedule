@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :authorize, :except=>:create
+  before_filter :is_admin?, :except=>:create
   layout 'admin'
 
   # GET /comments

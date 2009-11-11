@@ -1,5 +1,5 @@
 class TimeslotsController < ApplicationController
-  before_filter :authorize
+  before_filter :is_admin?
   layout 'admin', :except=>[:edit,:new]
   
   # GET /timeslots
