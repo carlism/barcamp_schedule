@@ -1,5 +1,6 @@
 <tr>
   <th width="10%">Room</th>
+  <% RAILS_DEFAULT_LOGGER.info "timeslots: #{@timeslots.size}" %>
   <% @timeslots.each do |timeslot| %>
     <th width="<%=90/@timeslots.size%>%">
       <%=timeslot.start_time.strftime("%I:%M %p")%>
