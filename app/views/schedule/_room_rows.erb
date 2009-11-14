@@ -1,4 +1,7 @@
 <% @timeslots.each_with_index do | timeslot, ts_index| %>
+  <% if ts_index % 4 == 0 %>
+  	<%=render :partial=>current_event.rotation_columns%>
+  <% end %>
   <tr>
     <td>
       <%=timeslot.start_time.strftime("%I:%M %p")%>

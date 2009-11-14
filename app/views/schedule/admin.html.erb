@@ -6,7 +6,6 @@
 </script>
 
 <table width="100%" cellspacing="0" class="schedule">
-  <%=render :partial=>current_event.rotation_columns%>
   <% render :layout=>current_event.rotation_rows do %>
 	  <td><div id="cell_<%=@timeslot_id%>.<%=@room_id%>">
 		<%=render :layout=>nil, :partial=>'presentation'%>
