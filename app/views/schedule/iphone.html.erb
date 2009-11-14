@@ -16,7 +16,7 @@
 
 <ul id="all_rooms" title="<%=current_event.name%>" selected="true">
   <% @timeslots.each_with_index do |timeslot, ts_index| %>
-  <li class="group" id="<%=timeslot.start_time.strftime('%H-%M')%>-<%=timeslot.slot_date.strftime('%b-%d-%Y')%>"><a href="#ts_<%=ts_index%>"><%=timeslot.start_time.strftime("%I:%M %p")%> <%=timeslot.slot_date.strftime("%a %b %d %Y")%></a></li>
+  <li id="<%=timeslot.start_time.strftime('%H-%M')%>-<%=timeslot.slot_date.strftime('%b-%d-%Y')%>"><a href="#ts_<%=ts_index%>"><%=timeslot.start_time.strftime("%I:%M %p")%> <%=timeslot.slot_date.strftime("%a %b %d %Y")%></a></li>
   <% end %>
 </ul>
 
