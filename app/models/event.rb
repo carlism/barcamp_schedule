@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   has_many :timeslots
-  has_many :rooms, :order => 'name'
+  has_many :rooms, :order => "to_number(name, '9999'), name"
   has_many :presentations
   has_many :roles  
   has_many :users, :through => :roles
