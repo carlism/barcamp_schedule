@@ -93,3 +93,11 @@ span.field {
 div#nav_box {
     float:right;
 }
+
+div.entry_form {
+    position: absolute;
+    top: 30;
+    left: 50;
+    border: 1px solid #999;
+    background-color: rgb(204,204,204);
+}

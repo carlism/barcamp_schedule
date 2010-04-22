@@ -1,3 +1,7 @@
+<%= link_to_remote image_tag("add.png", :border=>0), 
+    :update=>'form_div',
+    :url=>new_room_path %>
+<br/>
 <% for room in @rooms %>
 <div id="<%=room.id%>" object="room" url="<%=url_for room%>.xml">
 <h2>
@@ -8,12 +12,6 @@ location: <span class="rest_in_place" attribute="location"><%=h room.location %>
 capacity: <span class="rest_in_place" attribute="capacity"><%=h room.capacity %></span><br/>
 </div>
 <% end %>
-
-<br />
-
-<%= link_to_remote image_tag("add.png", :border=>0), 
-    :update=>'form_div',
-    :url=>new_room_path %>
 
 <div id="form_div">
 </div>

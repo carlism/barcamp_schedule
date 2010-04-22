@@ -1,3 +1,4 @@
+<div class="entry_form">
 <% form_for(@room) do |f| %>
   <%= f.error_messages %>
 
@@ -17,3 +18,5 @@
     <%= f.submit "Create" %>
   </p>
 <% end %>
+<%= set_focus ‘name’ %>
+</div>
