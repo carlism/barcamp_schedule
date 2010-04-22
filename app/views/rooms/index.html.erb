@@ -1,3 +1,6 @@
+<% content_for :title do %>
+	Rooms
+<% end %>
 <%= link_to_remote image_tag("add.png", :border=>0), 
     :update=>'form_div',
     :url=>new_room_path %>

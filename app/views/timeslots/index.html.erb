@@ -2,6 +2,10 @@
 	Timeslots
 <% end %>
 
+<%= link_to_remote image_tag("add.png", :border=>0), 
+	:update=>'form_div',
+	:url=>new_timeslot_path %>
+
 <table>
   <tr>
     <th>Start time</th>
@@ -15,9 +19,6 @@
   </tr>
 <% end %>
 </table>
-<%= link_to_remote image_tag("add.png", :border=>0), 
-	:update=>'form_div',
-	:url=>new_timeslot_path %>
 
 <div id="form_div">
 </div>
