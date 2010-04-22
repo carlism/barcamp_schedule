@@ -1,4 +1,5 @@
 <div class="entry_form">
+    <h2>New Room</h2>
 <% form_for(@room) do |f| %>
   <%= f.error_messages %>
 
@@ -18,5 +19,5 @@
     <%= f.submit "Create" %>
   </p>
 <% end %>
-<%= set_focus 'name' %>
+<%= set_focus 'room_name' %>
 </div>
