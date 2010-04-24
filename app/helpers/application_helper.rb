@@ -6,6 +6,6 @@ module ApplicationHelper
   end
   
   def linkify(text)
-    gsub(/@(\w+)/, '<a href="http://twitter.com/\1">@\1</a>') if text
+    text.gsub(/\s@(\w+)/, ' <a href="http://twitter.com/\1">@\1</a>') if text
   end
 end

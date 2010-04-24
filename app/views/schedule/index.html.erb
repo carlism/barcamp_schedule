@@ -7,7 +7,7 @@
       <td>
         <%if !@presentation.nil? and @presentation.respond_to? :title%>
           <strong><%=link_to @presentation.title, presentation_path(@presentation)%></strong><br/>
-          <%=h @presentation.presenter%>
+          <%=linkify @presentation.presenter%>
 		<% else %>
 			&nbsp;
         <% end %>
