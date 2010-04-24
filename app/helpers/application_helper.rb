@@ -6,6 +6,10 @@ module ApplicationHelper
   end
   
   def linkify(text)
-    text.gsub(/\s@(\w+)/, ' <a target="_blank" href="http://twitter.com/\1">@\1</a>') if text
+    if text
+      text = text.gsub(/\s@(\w+)/, ' <a target="_blank" href="http://twitter.com/\1">@\1</a>') 
+      text = text.gsub(/^@(\w+)/, '<a target="_blank" href="http://twitter.com/\1">@\1</a>') 
+    end
+    text
   end
 end
