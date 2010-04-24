@@ -12,7 +12,7 @@
 <% for presentation in @presentations %>
   <tr>
     <td><%=h presentation.title %></td>
-    <td><%=linkify presentation.presenter %></td>
+    <td><%=h presentation.presenter %></td>
     <td><%=h presentation.presenter_email %></td>
     <td><%=h presentation.room.name if presentation.room %></td>
     <td><%=h presentation.timeslot.start_time.strftime("%I:%M %p") if presentation.timeslot %></td>
